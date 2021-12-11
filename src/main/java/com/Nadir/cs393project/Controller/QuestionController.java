@@ -1,5 +1,6 @@
 package com.Nadir.cs393project.Controller;
 
+import com.Nadir.cs393project.dto.QuestionDTO;
 import com.Nadir.cs393project.model.Answer;
 import com.Nadir.cs393project.model.Question;
 import com.Nadir.cs393project.service.QuestionService;
@@ -15,7 +16,7 @@ public class QuestionController {
     QuestionService questionService;
 
     @GetMapping(value = "/question")
-    public List<Question> getAll(){
+    public List<QuestionDTO> getAll(){
         return questionService.getAll();
     }
     /*@GetMapping(value = "/question")
