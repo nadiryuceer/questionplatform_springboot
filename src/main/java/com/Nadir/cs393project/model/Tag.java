@@ -1,7 +1,7 @@
 package com.Nadir.cs393project.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 @Entity
@@ -11,7 +11,7 @@ public class Tag {
     private int id;
     private String name;
     @ManyToMany(mappedBy = "tags")
-    private ArrayList<Question> questions;
+    private List<Question> questions;
 
     public Tag(){}
 
@@ -27,10 +27,10 @@ public class Tag {
     public void setName(String name) {
         this.name = name;
     }
-    public ArrayList<Question> getQuestions() {
+    public List<Question> getQuestions() {
         return questions;
     }
-    public void setQuestions(ArrayList<Question> questions) {
+    public void setQuestions(List<Question> questions) {
         this.questions = questions;
     }
 }

@@ -2,7 +2,7 @@ package com.Nadir.cs393project.model;
 
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Date;
 
 @Entity
@@ -11,17 +11,20 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String title;
-    private String desc;
-    private Date date;
+    private String descript;
+    private Date publishdate;
     private int views;
     private int votes;
     @OneToMany(mappedBy = "question")
-    private ArrayList<Comment> comments;
+    private List<Comment> comments;
     @ManyToOne
     private User user;
     @ManyToMany
-    //TODO add joinColumns
-    private ArrayList<Tag> tags;
+    @JoinTable(joinColumns =
+        @JoinColumn(name = "question_id",referencedColumnName = "id", nullable = false),
+        inverseJoinColumns =
+        @JoinColumn(name = "tag_id",referencedColumnName = "id"))
+    private List<Tag> tags;
 
     public Question() {
 
@@ -39,18 +42,19 @@ public class Question {
     public void setTitle(String title) {
         this.title = title;
     }
-    public String getDesc() {
-        return desc;
+    public String getDescript() {
+        return descript;
     }
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescript(String descript) {
+        this.descript = descript;
     }
-    public Date getDate() {
-        return date;
+    public Date getPublishdate() {
+        return publishdate;
     }
-    public void setDate(Date date) {
-        this.date = date;
+    public void setPublishdate(Date publishdate) {
+        this.publishdate = publishdate;
     }
+
     public int getViews() {
         return views;
     }
@@ -63,10 +67,10 @@ public class Question {
     public void setVotes(int votes) {
         this.votes = votes;
     }
-    public ArrayList<Comment> getComments() {
+    public List<Comment> getComments() {
         return comments;
     }
-    public void setComments(ArrayList<Comment> comments) {
+    public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
     public User getUser() {
@@ -75,10 +79,10 @@ public class Question {
     public void setUser(User user) {
         this.user = user;
     }
-    public ArrayList<Tag> getTags() {
+    public List<Tag> getTags() {
         return tags;
     }
-    public void setTags(ArrayList<Tag> tags) {
+    public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
 }

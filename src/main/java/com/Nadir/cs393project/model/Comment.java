@@ -17,7 +17,7 @@ public class Comment {
     private Date date;
     private int votes;
     @OneToMany(mappedBy = "comment")
-    private ArrayList<Answer> answers;
+    private List<Answer> answers;
     @ManyToOne
     private Question question;
 
@@ -47,10 +47,10 @@ public class Comment {
     public void setDate(Date date) {
         this.date = date;
     }
-    public ArrayList<Answer> getAnswers() {
+    public List<Answer> getAnswers() {
         return answers;
     }
-    public void setAnswers(ArrayList<Answer> answers) {
+    public void setAnswers(List<Answer> answers) {
         this.answers = answers;
     }
     public Question getQuestion() {
