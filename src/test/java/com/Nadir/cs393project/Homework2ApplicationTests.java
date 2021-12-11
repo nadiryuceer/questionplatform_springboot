@@ -21,13 +21,13 @@ class Homework2ApplicationTests {
 	@Autowired
 	QuestionService addressService;
 	@Autowired
-	CustomerService customerService;
+    AnswerService customerService;
 	@Autowired
-	OrderService orderService;
+	CommentService orderService;
 	@Autowired
-	ProductService productService;
+	TagService productService;
 	@Autowired
-	ShopService shopService;
+	UserService shopService;
 
 	Answer createShop(String name, String addr){
 		Answer shop = new Answer();
