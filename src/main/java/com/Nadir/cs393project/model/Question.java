@@ -16,7 +16,9 @@ public class Question {
     private int views;
     private int votes;
     @OneToMany(mappedBy = "question")
-    private List<Comment> comments;
+    private List<CommentforQuestion> comments;
+    @OneToMany(mappedBy = "question")
+    private List<Answer> answers;
     @ManyToOne
     private User user;
     @ManyToMany
@@ -67,11 +69,17 @@ public class Question {
     public void setVotes(int votes) {
         this.votes = votes;
     }
-    public List<Comment> getComments() {
+    public List<CommentforQuestion> getComments() {
         return comments;
     }
-    public void setComments(List<Comment> comments) {
+    public void setComments(List<CommentforQuestion> comments) {
         this.comments = comments;
+    }
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
     }
     public User getUser() {
         return user;

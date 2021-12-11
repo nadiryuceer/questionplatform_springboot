@@ -15,6 +15,10 @@ public class User {
     private String lastName;
     @OneToMany(mappedBy = "user")
     private List<Question> questions;
+    @OneToMany(mappedBy = "user")
+    private List<Comment> comments;
+    @OneToMany(mappedBy = "user")
+    private List<Answer> answers;
 
     public User(){
 
@@ -49,5 +53,17 @@ public class User {
     }
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
+    }
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
+    }
+    public List<Comment> getComments() {
+        return comments;
+    }
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

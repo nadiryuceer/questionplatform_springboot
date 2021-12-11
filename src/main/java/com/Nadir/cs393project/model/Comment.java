@@ -7,19 +7,20 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Entity
+@Table(name = "Comment")
+@DiscriminatorColumn(name = "CM_TYPE", length = 5)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class Comment {
+public abstract class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String text;
-    private Date date;
+    private String txt;
+    private Date publishdate;
     private int votes;
-    @OneToMany(mappedBy = "comment")
-    private List<Answer> answers;
     @ManyToOne
-    private Question question;
+    private User user;
 
     public Comment(){}
 
@@ -29,11 +30,11 @@ public class Comment {
     public void setId(int id) {
         this.id = id;
     }
-    public String getText() {
-        return text;
+    public String getTxt() {
+        return txt;
     }
-    public void setText(String text) {
-        this.text = text;
+    public void setTxt(String txt) {
+        this.txt = txt;
     }
     public int getVotes() {
         return votes;
@@ -41,22 +42,17 @@ public class Comment {
     public void setVotes(int votes) {
         this.votes = votes;
     }
-    public Date getDate() {
-        return date;
+    public Date getPublishdate() {
+        return publishdate;
     }
-    public void setDate(Date date) {
-        this.date = date;
+    public void setPublishdate(Date publishdate) {
+        this.publishdate = publishdate;
     }
-    public List<Answer> getAnswers() {
-        return answers;
+
+    public User getUser() {
+        return user;
     }
-    public void setAnswers(List<Answer> answers) {
-        this.answers = answers;
-    }
-    public Question getQuestion() {
-        return question;
-    }
-    public void setQuestion(Question question) {
-        this.question = question;
+    public void setUser(User user) {
+        this.user = user;
     }
 }
