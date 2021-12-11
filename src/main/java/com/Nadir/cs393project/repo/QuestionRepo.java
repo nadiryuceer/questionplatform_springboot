@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface QuestionRepo extends JpaRepository<Question,Integer> {
-    @Query("SELECT q FROM Question q" )
+    @Query("SELECT q FROM Question AS q")
     List<Question> getAll();
 
     }
