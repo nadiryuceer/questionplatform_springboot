@@ -9,5 +9,5 @@ public interface QuestionService {
     public boolean save(Question question);
     public List<QuestionDTO> getAll();
     public Question getById(int id);
-    public List<Question> getWithTags(List<String> tags);
+    public List<QuestionDTO> getWithTags(String[] tags);
 }

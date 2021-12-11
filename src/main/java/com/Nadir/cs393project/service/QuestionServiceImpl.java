@@ -29,16 +29,18 @@ public class QuestionServiceImpl implements QuestionService {
             return false;
         }
     }
-    public List<QuestionDTO> getAll(){
-        List<Question> allqs = questionRepo.getAll();
+    public List<QuestionDTO> converttoDTOList(List<Question> qs){
         List<QuestionDTO> dtos = new ArrayList<>();
-        for(Question q : allqs) {
+        for(Question q : qs) {
             dtos.add(QuestionMapper.INSTANCE.QUESTION_DTO(q));
         }
         return dtos;
     }
-    public List<Question> getWithTags(List<String> tags){
-        return tagRepo.getQsWithTags(tags);
+    public List<QuestionDTO> getAll(){
+        return converttoDTOList(questionRepo.getAll());
+    }
+    public List<QuestionDTO> getWithTags(String[] tags){
+        return converttoDTOList(questionRepo.getAllWithTags(tags));
     }
     public Question getById(int id){
         return questionRepo.getById(id);

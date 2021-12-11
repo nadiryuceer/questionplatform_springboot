@@ -11,5 +11,7 @@ import java.util.List;
 public interface QuestionRepo extends JpaRepository<Question,Integer> {
     @Query("SELECT q FROM Question AS q")
     List<Question> getAll();
+    @Query("SELECT q FROM Question AS q INNER JOIN q.tags t where t.name in ?1")
+    List<Question> getAllWithTags(String[] tags);
 
     }
