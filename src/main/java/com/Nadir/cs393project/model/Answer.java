@@ -3,6 +3,7 @@ package com.Nadir.cs393project.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -63,5 +64,9 @@ public class Answer {
     }
     public void setComments(List<CommentforAnswer> comments) {
         this.comments = comments;
+    }
+    public void addComment(CommentforAnswer comment){
+        if(this.comments==null) this.comments = new ArrayList<>();
+        this.comments.add(comment);
     }
 }

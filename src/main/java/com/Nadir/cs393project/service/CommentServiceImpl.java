@@ -1,10 +1,14 @@
 package com.Nadir.cs393project.service;
 
+import com.Nadir.cs393project.Mapper.AnswerCommentSaveMapper;
 import com.Nadir.cs393project.Mapper.QuestionCommentSaveMapper;
+import com.Nadir.cs393project.dto.AnswerCommentSaveDTO;
 import com.Nadir.cs393project.dto.QuestionCommentSaveDTO;
+import com.Nadir.cs393project.model.CommentforAnswer;
 import com.Nadir.cs393project.model.CommentforQuestion;
 import com.Nadir.cs393project.model.User;
 import com.Nadir.cs393project.model.Comment;
+import com.Nadir.cs393project.repo.AnswerRepo;
 import com.Nadir.cs393project.repo.CommentRepo;
 import com.Nadir.cs393project.repo.QuestionRepo;
 import com.Nadir.cs393project.repo.UserRepo;
@@ -23,6 +27,9 @@ public class CommentServiceImpl implements CommentService {
     UserRepo userRepo;
     @Autowired
     QuestionRepo questionRepo;
+    @Autowired
+    AnswerRepo answerRepo;
+
     public Map<String,Integer> save(QuestionCommentSaveDTO dto){
         CommentforQuestion comment = QuestionCommentSaveMapper.INSTANCE.createCommentfromDTO(dto,questionRepo,userRepo);
         comment.getQuestion().addComment(comment);
@@ -31,6 +38,16 @@ public class CommentServiceImpl implements CommentService {
         Map<String,Integer> ids = new HashMap<>();
         ids.put("comment_id",comment.getId());
         ids.put("question_id", comment.getQuestion().getId());
+        return ids;
+    }
+    public Map<String,Integer> save(AnswerCommentSaveDTO dto){
+        CommentforAnswer comment = AnswerCommentSaveMapper.INSTANCE.createCommentfromDTO(dto,answerRepo,userRepo);
+        comment.getAnswer().addComment(comment);
+        comment.getUser().addComment(comment);
+        commentRepo.save(comment);
+        Map<String,Integer> ids = new HashMap<>();
+        ids.put("comment_id",comment.getId());
+        ids.put("answer_id", comment.getAnswer().getId());
         return ids;
     }
 }

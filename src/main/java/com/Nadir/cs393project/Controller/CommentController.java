@@ -1,5 +1,6 @@
 package com.Nadir.cs393project.Controller;
 
+import com.Nadir.cs393project.dto.AnswerCommentSaveDTO;
 import com.Nadir.cs393project.dto.QuestionCommentSaveDTO;
 import com.Nadir.cs393project.model.CommentforQuestion;
 import com.Nadir.cs393project.service.CommentService;
@@ -20,6 +21,12 @@ public class CommentController {
     @PostMapping(path = "/question/{id}/comment")
     Map<String,Integer> addCommentforQuestion(@PathVariable("id") int qid, @RequestBody QuestionCommentSaveDTO comment){
         comment.setQuestionid(qid);
+        return commentService.save(comment);
+    }
+
+    @PostMapping(path = "/answer/{id}/comment")
+    Map<String,Integer> addCommentforAnswer(@PathVariable("id") int answerid, @RequestBody AnswerCommentSaveDTO comment){
+        comment.setAnswerid(answerid);
         return commentService.save(comment);
     }
 }
