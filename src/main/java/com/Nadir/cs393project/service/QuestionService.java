@@ -12,4 +12,5 @@ public interface QuestionService {
     public List<QuestionGetAllDTO> getAll();
     public Question getById(int id);
     public List<QuestionGetAllDTO> getWithTags(String[] tags);
+    public Map<String,Integer> vote(int id);
 }

@@ -32,4 +32,11 @@ public class AnswerServiceImpl implements AnswerService {
         ids.put("question_id",answer.getQuestion().getId());
         return ids;
     }
+    public Map<String, Integer> vote(int id){
+        int votecount = answerRepo.getById(id).getVotes();
+        answerRepo.vote(id, ++votecount);
+        Map<String,Integer> votemap = new HashMap<>();
+        votemap.put("votecount",votecount);
+        return votemap;
+    }
 }

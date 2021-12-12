@@ -13,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class QuestionServiceImpl implements QuestionService {
@@ -47,11 +49,12 @@ public class QuestionServiceImpl implements QuestionService {
     public Question getById(int id){
         return questionRepo.getById(id);
     }
-    /*public List<Question> findByText(String text){
-        return addressRepo.findByText(text);
+    public Map<String, Integer> vote(int id){
+        int votecount = getById(id).getVotes();
+        questionRepo.vote(id, ++votecount);
+        Map<String,Integer> votemap = new HashMap<>();
+        votemap.put("votecount",votecount);
+        return votemap;
     }
-    public List<Question> findByCity(String city){
-        return addressRepo.findByCity(city);
-    }
-*/
+
 }

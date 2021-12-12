@@ -28,4 +28,8 @@ public class QuestionController {
     public int save(@RequestBody QuestionSaveDTO data){
         return questionService.save(data);
     }
+    @PutMapping(value = "/question/{id}/vote")
+    public Map<String, Integer> voteQuestion(@PathVariable("id") int qid){
+        return questionService.vote(qid);
+    }
 }

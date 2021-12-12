@@ -50,4 +50,11 @@ public class CommentServiceImpl implements CommentService {
         ids.put("answer_id", comment.getAnswer().getId());
         return ids;
     }
+    public Map<String, Integer> vote(int id){
+        int votecount = commentRepo.getById(id).getVotes();
+        commentRepo.vote(id, ++votecount);
+        Map<String,Integer> votemap = new HashMap<>();
+        votemap.put("votecount",votecount);
+        return votemap;
+    }
 }

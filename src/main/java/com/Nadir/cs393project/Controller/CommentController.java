@@ -5,10 +5,7 @@ import com.Nadir.cs393project.dto.QuestionCommentSaveDTO;
 import com.Nadir.cs393project.model.CommentforQuestion;
 import com.Nadir.cs393project.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -28,5 +25,9 @@ public class CommentController {
     Map<String,Integer> addCommentforAnswer(@PathVariable("id") int answerid, @RequestBody AnswerCommentSaveDTO comment){
         comment.setAnswerid(answerid);
         return commentService.save(comment);
+    }
+    @PutMapping(value = "/comment/{id}/vote")
+    public Map<String, Integer> voteComment(@PathVariable("id") int cid){
+        return commentService.vote(cid);
     }
 }
