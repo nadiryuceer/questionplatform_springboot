@@ -1,6 +1,7 @@
 package com.Nadir.cs393project.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.List;
 
@@ -32,5 +33,9 @@ public class Tag {
     }
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
+    }
+    public void addQuestion(Question question){
+        if(this.questions==null) this.questions = new ArrayList<>();
+        this.questions.add(question);
     }
 }

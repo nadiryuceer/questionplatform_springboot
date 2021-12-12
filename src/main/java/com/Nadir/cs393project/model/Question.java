@@ -23,7 +23,7 @@ public class Question {
     private User user;
     @ManyToMany
     @JoinTable(joinColumns =
-        @JoinColumn(name = "question_id",referencedColumnName = "id", nullable = false),
+        @JoinColumn(name = "question_id",referencedColumnName = "id"),
         inverseJoinColumns =
         @JoinColumn(name = "tag_id",referencedColumnName = "id"))
     private List<Tag> tags;

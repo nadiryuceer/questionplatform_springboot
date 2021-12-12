@@ -3,16 +3,16 @@ package com.Nadir.cs393project.dto;
 import java.util.Date;
 import java.util.List;
 
-public class QuestionDTO {
+public class QuestionGetAllDTO {
     private String title;
     private String descript;
-    private List<String> tags;
+    private List<String> tagnames;
     private Date publishdate;
     private String askedby;
     private int answercount;
-    private int votecount;
+    private int votes;
 
-    public QuestionDTO() {}
+    public QuestionGetAllDTO() {}
 
     public String getTitle() {
         return title;
@@ -38,17 +38,17 @@ public class QuestionDTO {
     public void setAnswercount(int answercount) {
         this.answercount = answercount;
     }
-    public List<String> getTags() {
-        return tags;
+    public List<String> getTagnames() {
+        return tagnames;
     }
-    public void setTags(List<String> tags) {
-        this.tags = tags;
+    public void setTagnames(List<String> tagnames) {
+        this.tagnames = tagnames;
     }
-    public int getVotecount() {
-        return votecount;
+    public int getVotes() {
+        return votes;
     }
-    public void setVotecount(int votecount) {
-        this.votecount = votecount;
+    public void setVotes(int votes) {
+        this.votes = votes;
     }
     public String getAskedby() {
         return askedby;

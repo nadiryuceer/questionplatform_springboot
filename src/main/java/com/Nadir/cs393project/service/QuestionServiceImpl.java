@@ -1,11 +1,14 @@
 package com.Nadir.cs393project.service;
 
-import com.Nadir.cs393project.Mapper.QuestionMapper;
-import com.Nadir.cs393project.dto.QuestionDTO;
+import com.Nadir.cs393project.Mapper.QuestionGetAllMapper;
+import com.Nadir.cs393project.Mapper.QuestionSaveMapper;
+import com.Nadir.cs393project.dto.QuestionGetAllDTO;
+import com.Nadir.cs393project.dto.QuestionSaveDTO;
 import com.Nadir.cs393project.model.Question;
-import com.Nadir.cs393project.repo.AnswerRepo;
+import com.Nadir.cs393project.model.Tag;
 import com.Nadir.cs393project.repo.QuestionRepo;
 import com.Nadir.cs393project.repo.TagRepo;
+import com.Nadir.cs393project.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,28 +21,27 @@ public class QuestionServiceImpl implements QuestionService {
     QuestionRepo questionRepo;
     @Autowired
     TagRepo tagRepo;
+    @Autowired
+    UserRepo userRepo;
 
     @Override
-    public boolean save(Question question) {
-        try {
-            questionRepo.save(question);
-            return true;
-        } catch (Exception e){
-            System.out.println(e.getCause());
-            return false;
-        }
+    public int save(QuestionSaveDTO data) {
+        Question q = QuestionSaveMapper.INSTANCE.createFullObjectforSave(data, userRepo,tagRepo);
+        for(Tag t : q.getTags()) t.addQuestion(q);
+        questionRepo.save(q);
+        return q.getId();
     }
-    public List<QuestionDTO> converttoDTOList(List<Question> qs){
-        List<QuestionDTO> dtos = new ArrayList<>();
+    public List<QuestionGetAllDTO> converttoDTOList(List<Question> qs){
+        List<QuestionGetAllDTO> dtos = new ArrayList<>();
         for(Question q : qs) {
-            dtos.add(QuestionMapper.INSTANCE.QUESTION_DTO(q));
+            dtos.add(QuestionGetAllMapper.INSTANCE.GetCutDTO(q));
         }
         return dtos;
     }
-    public List<QuestionDTO> getAll(){
+    public List<QuestionGetAllDTO> getAll(){
         return converttoDTOList(questionRepo.getAll());
     }
-    public List<QuestionDTO> getWithTags(String[] tags){
+    public List<QuestionGetAllDTO> getWithTags(String[] tags){
         return converttoDTOList(questionRepo.getAllWithTags(tags));
     }
     public Question getById(int id){
