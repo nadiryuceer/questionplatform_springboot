@@ -17,7 +17,7 @@ public abstract class Comment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String txt;
-    private Date publishdate;
+    private Date publishdate=new Date();
     private int votes=0;
     @ManyToOne
     private User user;

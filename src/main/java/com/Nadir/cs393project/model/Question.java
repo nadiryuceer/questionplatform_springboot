@@ -98,4 +98,8 @@ public class Question {
         if(this.answers==null) this.answers = new ArrayList<>();
         this.answers.add(answer);
     }
+    public void addComment(CommentforQuestion comment){
+        if(this.comments==null) this.comments = new ArrayList<>();
+        this.comments.add(comment);
+    }
 }
