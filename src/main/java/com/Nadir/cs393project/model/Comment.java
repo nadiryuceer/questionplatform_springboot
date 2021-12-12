@@ -18,7 +18,7 @@ public abstract class Comment {
     private int id;
     private String txt;
     private Date publishdate;
-    private int votes;
+    private int votes=0;
     @ManyToOne
     private User user;
 

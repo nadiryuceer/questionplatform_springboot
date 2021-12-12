@@ -13,8 +13,8 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String txt;
-    private Date publishdate;
-    private int votes;
+    private Date publishdate = new Date();
+    private int votes=0;
     @ManyToOne
     private User user;
     @ManyToOne

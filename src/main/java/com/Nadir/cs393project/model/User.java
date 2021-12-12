@@ -1,6 +1,7 @@
 package com.Nadir.cs393project.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 import java.util.List;
@@ -65,5 +66,9 @@ public class User {
     }
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+    public void addAnswer(Answer answer){
+        if(this.answers==null) this.answers = new ArrayList<>();
+        this.answers.add(answer);
     }
 }

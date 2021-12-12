@@ -21,7 +21,7 @@ public class QuestionController {
     }
 
     @GetMapping(value = "/question/{id}")
-    public Question getWithTags(@PathVariable("id") int id){
+    public Question getWithId(@PathVariable("id") int id){
         return questionService.getById(id);
     }
     @PostMapping(value = "/question")

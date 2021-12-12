@@ -2,6 +2,7 @@ package com.Nadir.cs393project.model;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 
@@ -13,8 +14,8 @@ public class Question {
     private String title;
     private String descript;
     private Date publishdate;
-    private int views;
-    private int votes;
+    private int views=0;
+    private int votes=0;
     @OneToMany(mappedBy = "question")
     private List<CommentforQuestion> comments;
     @OneToMany(mappedBy = "question")
@@ -92,5 +93,9 @@ public class Question {
     }
     public void setTags(List<Tag> tags) {
         this.tags = tags;
+    }
+    public void addAnswer(Answer answer){
+        if(this.answers==null) this.answers = new ArrayList<>();
+        this.answers.add(answer);
     }
 }
