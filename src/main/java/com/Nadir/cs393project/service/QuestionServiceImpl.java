@@ -12,10 +12,7 @@ import com.Nadir.cs393project.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class QuestionServiceImpl implements QuestionService {
@@ -52,9 +49,7 @@ public class QuestionServiceImpl implements QuestionService {
     public Map<String, Integer> vote(int id){
         int votecount = getById(id).getVotes();
         questionRepo.vote(id, ++votecount);
-        Map<String,Integer> votemap = new HashMap<>();
-        votemap.put("votecount",votecount);
-        return votemap;
+        return Collections.singletonMap("votecount",votecount);
     }
 
 }

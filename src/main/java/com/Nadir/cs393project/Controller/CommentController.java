@@ -30,4 +30,8 @@ public class CommentController {
     public Map<String, Integer> voteComment(@PathVariable("id") int cid){
         return commentService.vote(cid);
     }
+    @DeleteMapping(value = "/comment/{id}")
+    public Map<String,Boolean> delete(@PathVariable("id") int id){
+        return commentService.delete(id);
+    }
 }

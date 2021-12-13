@@ -15,6 +15,7 @@ import com.Nadir.cs393project.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,8 +54,11 @@ public class CommentServiceImpl implements CommentService {
     public Map<String, Integer> vote(int id){
         int votecount = commentRepo.getById(id).getVotes();
         commentRepo.vote(id, ++votecount);
-        Map<String,Integer> votemap = new HashMap<>();
-        votemap.put("votecount",votecount);
-        return votemap;
+        return Collections.singletonMap("votecount",votecount);
+    }
+
+    public Map<String,Boolean> delete(int id){
+        commentRepo.deleteById(id);
+        return Collections.singletonMap("success", true);
     }
 }

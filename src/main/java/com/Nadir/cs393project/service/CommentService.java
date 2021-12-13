@@ -10,4 +10,5 @@ public interface CommentService {
     public Map<String,Integer> save(QuestionCommentSaveDTO comment);
     public Map<String,Integer> save(AnswerCommentSaveDTO comment);
     public Map<String,Integer> vote(int id);
+    public Map<String,Boolean> delete(int id);
 }

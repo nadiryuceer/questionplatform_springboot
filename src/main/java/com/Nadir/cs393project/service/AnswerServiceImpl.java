@@ -9,6 +9,7 @@ import com.Nadir.cs393project.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,8 +36,6 @@ public class AnswerServiceImpl implements AnswerService {
     public Map<String, Integer> vote(int id){
         int votecount = answerRepo.getById(id).getVotes();
         answerRepo.vote(id, ++votecount);
-        Map<String,Integer> votemap = new HashMap<>();
-        votemap.put("votecount",votecount);
-        return votemap;
+        return Collections.singletonMap("votecount",votecount);
     }
 }
