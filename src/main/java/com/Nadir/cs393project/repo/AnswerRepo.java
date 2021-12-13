@@ -15,4 +15,9 @@ public interface AnswerRepo extends JpaRepository<Answer,Integer> {
     @Query("UPDATE Answer a SET a.votes = ?2 WHERE a.id = ?1")
     @Transactional
     void vote(int qid, int updatedvote);
+
+    @Modifying
+    @Query("UPDATE Answer a SET a.txt = ?2 WHERE a.id = ?1")
+    @Transactional
+    void update(int id, String txt);
 }

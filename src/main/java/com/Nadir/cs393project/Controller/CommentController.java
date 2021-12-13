@@ -34,4 +34,8 @@ public class CommentController {
     public Map<String,Boolean> delete(@PathVariable("id") int id){
         return commentService.delete(id);
     }
+    @PutMapping(value = "/comment/{id}")
+    public Map<String, Boolean> update(@PathVariable("id") int id, @RequestBody Map<String,String> txt){
+        return commentService.update(id,txt.get("txt"));
+    }
 }

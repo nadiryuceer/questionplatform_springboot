@@ -15,4 +15,8 @@ public interface CommentRepo extends JpaRepository<Comment,Integer> {
     @Query("UPDATE Comment c SET c.votes = ?2 WHERE c.id = ?1")
     @Transactional
     void vote(int qid, int updatedvote);
+    @Modifying
+    @Query("UPDATE Comment a SET a.txt = ?2 WHERE a.id = ?1")
+    @Transactional
+    void update(int id, String txt);
 }

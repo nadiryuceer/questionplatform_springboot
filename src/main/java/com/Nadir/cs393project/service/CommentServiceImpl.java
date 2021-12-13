@@ -61,4 +61,8 @@ public class CommentServiceImpl implements CommentService {
         commentRepo.deleteById(id);
         return Collections.singletonMap("success", true);
     }
+    public Map<String,Boolean> update(int id, String txt){
+        commentRepo.update(id,txt);
+        return Collections.singletonMap("success",true);
+    }
 }
