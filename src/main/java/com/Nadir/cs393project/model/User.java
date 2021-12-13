@@ -1,5 +1,7 @@
 package com.Nadir.cs393project.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

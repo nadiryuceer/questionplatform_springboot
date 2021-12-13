@@ -1,6 +1,7 @@
 package com.Nadir.cs393project.Controller;
 
 import com.Nadir.cs393project.dto.QuestionGetAllDTO;
+import com.Nadir.cs393project.dto.QuestionGetByIdWithDetailsDTO;
 import com.Nadir.cs393project.dto.QuestionSaveDTO;
 import com.Nadir.cs393project.model.Question;
 import com.Nadir.cs393project.service.QuestionService;
@@ -21,8 +22,8 @@ public class QuestionController {
     }
 
     @GetMapping(value = "/question/{id}")
-    public Question getWithId(@PathVariable("id") int id){
-        return questionService.getById(id);
+    public QuestionGetByIdWithDetailsDTO getByIdWithDetails(@PathVariable("id") int id){
+        return questionService.getByIdWithDetails(id);
     }
     @PostMapping(value = "/question")
     public int save(@RequestBody QuestionSaveDTO data){

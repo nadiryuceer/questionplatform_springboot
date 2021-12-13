@@ -38,4 +38,7 @@ public class AnswerServiceImpl implements AnswerService {
         answerRepo.vote(id, ++votecount);
         return Collections.singletonMap("votecount",votecount);
     }
+    /*public Map<String,Boolean> update(Answer answer){
+        answerRepo
+    }*/
 }

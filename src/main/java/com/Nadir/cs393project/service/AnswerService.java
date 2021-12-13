@@ -9,4 +9,5 @@ import java.util.Map;
 public interface AnswerService {
     public Map<String,Integer> save(AnswerSaveDTO answerDTO);
     public Map<String,Integer> vote(int id);
+    //public Map<String,Boolean> update(Answer answer);
 }

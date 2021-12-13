@@ -1,40 +1,24 @@
-package com.Nadir.cs393project.model;
+package com.Nadir.cs393project.dto;
 
+import com.Nadir.cs393project.model.Answer;
+import com.Nadir.cs393project.model.CommentforQuestion;
+import com.Nadir.cs393project.model.User;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.util.Date;
+import java.util.List;
 
-@Entity
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class Question {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class QuestionGetByIdWithDetailsDTO {
     private int id;
     private String title;
     private String descript;
     private Date publishdate;
-    private int views=0;
-    private int votes=0;
-    @OneToMany(mappedBy = "question")
+    private int views;
+    private int votes;
     private List<CommentforQuestion> comments;
-    @OneToMany(mappedBy = "question")
     private List<Answer> answers;
-    @ManyToOne
     private User user;
-    @ManyToMany
-    @JoinTable(joinColumns =
-        @JoinColumn(name = "question_id",referencedColumnName = "id"),
-        inverseJoinColumns =
-        @JoinColumn(name = "tag_id",referencedColumnName = "id"))
-    private List<Tag> tags;
-
-    public Question() {
-
-    }
 
     public int getId() {
         return id;
@@ -60,7 +44,6 @@ public class Question {
     public void setPublishdate(Date publishdate) {
         this.publishdate = publishdate;
     }
-
     public int getViews() {
         return views;
     }
@@ -90,19 +73,5 @@ public class Question {
     }
     public void setUser(User user) {
         this.user = user;
-    }
-    public List<Tag> getTags() {
-        return tags;
-    }
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
-    }
-    public void addAnswer(Answer answer){
-        if(this.answers==null) this.answers = new ArrayList<>();
-        this.answers.add(answer);
-    }
-    public void addComment(CommentforQuestion comment){
-        if(this.comments==null) this.comments = new ArrayList<>();
-        this.comments.add(comment);
     }
 }
