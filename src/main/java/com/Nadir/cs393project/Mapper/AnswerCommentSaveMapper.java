@@ -1,5 +1,7 @@
 package com.Nadir.cs393project.Mapper;
 
+import com.Nadir.cs393project.Exception.AnswerNotFoundException;
+import com.Nadir.cs393project.Exception.UserNotFoundException;
 import com.Nadir.cs393project.dto.AnswerCommentSaveDTO;
 import com.Nadir.cs393project.dto.QuestionCommentSaveDTO;
 import com.Nadir.cs393project.model.CommentforAnswer;
@@ -21,7 +23,15 @@ public interface AnswerCommentSaveMapper {
 
     @AfterMapping
     default void after(AnswerCommentSaveDTO data, @MappingTarget CommentforAnswer comment, @Context AnswerRepo answerRepo, @Context UserRepo userRepo){
-        comment.setUser(userRepo.getById(data.getUserid()));
-        comment.setAnswer(answerRepo.getById(data.getAnswerid()));
+        try{
+            comment.setUser(userRepo.getById(data.getUserid()));
+        }catch (Exception e){
+            throw new UserNotFoundException();
+        }
+        try{
+            comment.setAnswer(answerRepo.getById(data.getAnswerid()));
+        }catch (Exception e){
+            throw new AnswerNotFoundException();
+        }
     }
 }

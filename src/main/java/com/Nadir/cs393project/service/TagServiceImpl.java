@@ -11,13 +11,7 @@ import java.util.List;
 public class TagServiceImpl implements TagService {
     @Autowired
     TagRepo tagRepo;
-    public boolean save(Tag tag){
-        try {
-            tagRepo.save(tag);
-            return true;
-        }catch (Exception e){
-            System.out.println(e.getCause());
-            return false;
-        }
+    public void save(Tag tag){
+        tagRepo.save(tag);
     }
 }

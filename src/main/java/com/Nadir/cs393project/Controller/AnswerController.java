@@ -2,6 +2,7 @@ package com.Nadir.cs393project.Controller;
 
 import com.Nadir.cs393project.dto.AnswerSaveDTO;
 import com.Nadir.cs393project.service.AnswerService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,15 +13,25 @@ public class AnswerController {
     @Autowired
     AnswerService answerService;
 
+    @Operation( summary = "AddAnswertoQuestion.",
+            description = "Adds answer under a specific question.",
+            tags = { "Answer" })
     @PostMapping(path = "/question/{id}/answer")
     public Map<String,Integer> addAnswertoQuestion(@PathVariable("id") int qid, @RequestBody AnswerSaveDTO answerSaveDTO){
         answerSaveDTO.setQid(qid);
         return answerService.save(answerSaveDTO);
     }
+    @Operation( summary = "Vote answer.",
+            description = "Votes a specific answer.",
+            tags = { "Answer" })
     @PutMapping(value = "/answer/{id}/vote")
     public Map<String, Integer> voteAnswer(@PathVariable("id") int aid){
         return answerService.vote(aid);
     }
+
+    @Operation( summary = "UpdatetextofAnswer.",
+            description = "Updates the text inside answer.",
+            tags = { "Answer" })
     @PutMapping(value = "/answer/{id}")
     public Map<String, Boolean> update(@PathVariable("id") int id, @RequestBody Map<String,String> txt){
         return answerService.update(id,txt.get("txt"));

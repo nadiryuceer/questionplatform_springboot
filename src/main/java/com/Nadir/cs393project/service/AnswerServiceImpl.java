@@ -1,5 +1,7 @@
 package com.Nadir.cs393project.service;
 
+import com.Nadir.cs393project.Exception.AnswerNotFoundException;
+import com.Nadir.cs393project.Exception.CommentNotFoundException;
 import com.Nadir.cs393project.Mapper.AnswerSaveMapper;
 import com.Nadir.cs393project.dto.AnswerSaveDTO;
 import com.Nadir.cs393project.model.Answer;
@@ -34,11 +36,21 @@ public class AnswerServiceImpl implements AnswerService {
         return ids;
     }
     public Map<String, Integer> vote(int id){
-        int votecount = answerRepo.getById(id).getVotes();
+        int votecount;
+        try{
+            votecount = answerRepo.getById(id).getVotes();
+        }catch (Exception e){
+            throw new AnswerNotFoundException();
+        }
         answerRepo.vote(id, ++votecount);
         return Collections.singletonMap("votecount",votecount);
     }
     public Map<String,Boolean> update(int id, String txt){
+        try{
+            answerRepo.getById(id);
+        }catch (Exception e){
+            throw new AnswerNotFoundException();
+        }
         answerRepo.update(id,txt);
         return Collections.singletonMap("success",true);
     }

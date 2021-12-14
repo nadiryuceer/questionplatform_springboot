@@ -1,5 +1,6 @@
 package com.Nadir.cs393project.service;
 
+import com.Nadir.cs393project.Exception.CommentNotFoundException;
 import com.Nadir.cs393project.Mapper.AnswerCommentSaveMapper;
 import com.Nadir.cs393project.Mapper.QuestionCommentSaveMapper;
 import com.Nadir.cs393project.dto.AnswerCommentSaveDTO;
@@ -52,16 +53,31 @@ public class CommentServiceImpl implements CommentService {
         return ids;
     }
     public Map<String, Integer> vote(int id){
-        int votecount = commentRepo.getById(id).getVotes();
+        int votecount;
+        try{
+            votecount = commentRepo.getById(id).getVotes();
+        } catch(Exception e){
+            throw new CommentNotFoundException();
+        }
         commentRepo.vote(id, ++votecount);
         return Collections.singletonMap("votecount",votecount);
     }
 
     public Map<String,Boolean> delete(int id){
+        try{
+            commentRepo.getById(id);
+        } catch(Exception e){
+            throw new CommentNotFoundException();
+        }
         commentRepo.deleteById(id);
         return Collections.singletonMap("success", true);
     }
     public Map<String,Boolean> update(int id, String txt){
+        try{
+            commentRepo.getById(id);
+        }catch (Exception e){
+            throw new CommentNotFoundException();
+        }
         commentRepo.update(id,txt);
         return Collections.singletonMap("success",true);
     }

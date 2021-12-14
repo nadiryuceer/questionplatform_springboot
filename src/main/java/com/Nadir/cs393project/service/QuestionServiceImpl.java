@@ -1,5 +1,6 @@
 package com.Nadir.cs393project.service;
 
+import com.Nadir.cs393project.Exception.QuestionNotFoundException;
 import com.Nadir.cs393project.Mapper.QuestionGetAllMapper;
 import com.Nadir.cs393project.Mapper.QuestionGetByIdWithDetailsMapper;
 import com.Nadir.cs393project.Mapper.QuestionSaveMapper;
@@ -46,10 +47,19 @@ public class QuestionServiceImpl implements QuestionService {
         return converttoDTOList(questionRepo.getAllWithTags(tags));
     }
     public QuestionGetByIdWithDetailsDTO getByIdWithDetails(int id){
-        return QuestionGetByIdWithDetailsMapper.INSTANCE.convertQuestiontoDTO(questionRepo.getById(id));
+        try{
+            return QuestionGetByIdWithDetailsMapper.INSTANCE.convertQuestiontoDTO(questionRepo.getById(id));
+        } catch (Exception e){
+            throw new QuestionNotFoundException();
+        }
     }
     public Map<String, Integer> vote(int id){
-        int votecount = questionRepo.getById(id).getVotes();
+        int votecount;
+        try {
+            votecount = questionRepo.getById(id).getVotes();
+        } catch(Exception e){
+            throw new QuestionNotFoundException();
+        }
         questionRepo.vote(id, ++votecount);
         return Collections.singletonMap("votecount",votecount);
     }
