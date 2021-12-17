@@ -4,6 +4,7 @@ import com.Nadir.cs393project.dto.AnswerSaveDTO;
 import com.Nadir.cs393project.service.AnswerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,9 @@ import java.util.Map;
 
 @RestController
 public class AnswerController {
+    public final String answerquestionreturnschema = "{\n    \"answer_id\": 0,\n    \"question_id\": 0\n}";
+    public final String votereturnschema = "{\n    \"votecount\": 0\n}";
+    public final String successschema = "{\n    \"success\": true\n}";
     @Autowired
     AnswerService answerService;
 
@@ -21,7 +25,8 @@ public class AnswerController {
             tags = { "Answer" })
     @PostMapping(path = "/question/{id}/answer")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "successful operation"), @ApiResponse(responseCode = "404", description = "question with provided id does not exist")
+            @ApiResponse(responseCode = "200", description = "successful save", content = @Content(examples = @ExampleObject(value = answerquestionreturnschema))),
+            @ApiResponse(responseCode = "404", description = "question with provided id does not exist", content = @Content)
     })
     public Map<String,Integer> addAnswertoQuestion(@PathVariable("id") int qid, @RequestBody AnswerSaveDTO answerSaveDTO){
         answerSaveDTO.setQid(qid);
@@ -31,7 +36,8 @@ public class AnswerController {
             description = "Votes a specific answer.",
             tags = { "Answer" })
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "successful operation"), @ApiResponse(responseCode = "404", description = "answer with provided id does not exist")
+            @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(examples = @ExampleObject(value = votereturnschema))),
+            @ApiResponse(responseCode = "404", description = "answer with provided id does not exist", content = @Content)
     })
     @PutMapping(value = "/answer/{id}/vote")
     public Map<String, Integer> voteAnswer(@PathVariable("id") int aid){
@@ -42,10 +48,11 @@ public class AnswerController {
             description = "Updates the text inside answer.",
             tags = { "Answer" })
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "successful operation"), @ApiResponse(responseCode = "404", description = "answer with provided id does not exist")
+            @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(examples = @ExampleObject(value = successschema))),
+            @ApiResponse(responseCode = "404", description = "answer with provided id does not exist", content = @Content)
     })
     @PutMapping(value = "/answer/{id}")
-    public Map<String, Boolean> update(@PathVariable("id") int id, @RequestParam Map<String,String> txt){
+    public Map<String, Boolean> update(@PathVariable("id") int id, @RequestBody Map<String,String> txt){
         return answerService.update(id,txt.get("txt"));
     }
 }

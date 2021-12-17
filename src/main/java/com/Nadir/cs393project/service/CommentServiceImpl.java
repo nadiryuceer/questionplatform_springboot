@@ -65,11 +65,10 @@ public class CommentServiceImpl implements CommentService {
 
     public Map<String,Boolean> delete(int id){
         try{
-            commentRepo.getById(id);
+            commentRepo.deleteById(id);
         } catch(Exception e){
             throw new CommentNotFoundException();
         }
-        commentRepo.deleteById(id);
         return Collections.singletonMap("success", true);
     }
     public Map<String,Boolean> update(int id, String txt){
