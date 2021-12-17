@@ -5,7 +5,7 @@ import com.Nadir.cs393project.Mapper.QuestionGetAllMapper;
 import com.Nadir.cs393project.Mapper.QuestionGetByIdWithDetailsMapper;
 import com.Nadir.cs393project.Mapper.QuestionSaveMapper;
 import com.Nadir.cs393project.dto.QuestionGetAllDTO;
-import com.Nadir.cs393project.dto.QuestionGetByIdWithDetailsDTO;
+import com.Nadir.cs393project.dto.QuestionGetByIdWithDetails.QuestionDTO;
 import com.Nadir.cs393project.dto.QuestionSaveDTO;
 import com.Nadir.cs393project.model.Question;
 import com.Nadir.cs393project.model.Tag;
@@ -46,7 +46,7 @@ public class QuestionServiceImpl implements QuestionService {
     public List<QuestionGetAllDTO> getWithTags(String[] tags){
         return converttoDTOList(questionRepo.getAllWithTags(tags));
     }
-    public QuestionGetByIdWithDetailsDTO getByIdWithDetails(int id){
+    public QuestionDTO getByIdWithDetails(int id){
         try{
             return QuestionGetByIdWithDetailsMapper.INSTANCE.convertQuestiontoDTO(questionRepo.getById(id));
         } catch (Exception e){

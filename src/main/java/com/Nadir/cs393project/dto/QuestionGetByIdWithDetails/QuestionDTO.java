@@ -1,24 +1,21 @@
-package com.Nadir.cs393project.dto;
+package com.Nadir.cs393project.dto.QuestionGetByIdWithDetails;
 
 import com.Nadir.cs393project.model.Answer;
 import com.Nadir.cs393project.model.CommentforQuestion;
-import com.Nadir.cs393project.model.User;
 
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import java.util.Date;
 import java.util.List;
 
-public class QuestionGetByIdWithDetailsDTO {
+public class QuestionDTO {
     private int id;
     private String title;
     private String descript;
     private Date publishdate;
     private int views;
     private int votes;
-    private List<CommentforQuestion> comments;
-    private List<Answer> answers;
-    private User user;
+    private List<CommentDTO> comments;
+    private List<AnswerDTO> answers;
+    private String user;
 
     public int getId() {
         return id;
@@ -56,22 +53,22 @@ public class QuestionGetByIdWithDetailsDTO {
     public void setVotes(int votes) {
         this.votes = votes;
     }
-    public List<CommentforQuestion> getComments() {
+    public List<CommentDTO> getComments() {
         return comments;
     }
-    public void setComments(List<CommentforQuestion> comments) {
+    public void setComments(List<CommentDTO> comments) {
         this.comments = comments;
     }
-    public List<Answer> getAnswers() {
+    public List<AnswerDTO> getAnswers() {
         return answers;
     }
-    public void setAnswers(List<Answer> answers) {
+    public void setAnswers(List<AnswerDTO> answers) {
         this.answers = answers;
     }
-    public User getUser() {
+    public String getUser() {
         return user;
     }
-    public void setUser(User user) {
+    public void setUser(String user) {
         this.user = user;
     }
 }
