@@ -14,5 +14,6 @@ public interface QuestionGetByIdWithDetailsMapper {
     default String map(User user){
         return user.getNickname();
     }
+    default String map(Tag tag){return tag.getName();}
 
 }
