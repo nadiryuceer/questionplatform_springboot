@@ -23,13 +23,15 @@ import java.util.Map;
 public class QuestionController {
     public final String idreturnschema = "{\n    \"id\": 0\n}";
     public final String votereturnschema = "{\n    \"votecount\": 0\n}";
+    public final String tagschema = "{\n    \"tags\":[\"string\"]\n}";
     @Autowired
     QuestionService questionService;
 
     @Operation( summary = "Get all questions.",
             description = "Returns all questions.",
             tags = { "Question" })
-    @GetMapping(value = "/question")
+    @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(schema = @Schema(example = tagschema)))
+    @GetMapping(value = "/questions")
     @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(array = @ArraySchema(schema = @Schema(implementation = QuestionGetAllDTO.class))))
     public List<QuestionGetAllDTO> getAll(@RequestBody(required = false) Map<String, String[]> tags){
         return (tags==null) ? questionService.getAll() : questionService.getWithTags(tags.get("tags"));
@@ -43,7 +45,7 @@ public class QuestionController {
             description = "Returns the user, complete text, comments together with their users" +
                     "and answers of both question and its comments with their users.",
             tags = { "Question" })
-    @GetMapping(value = "/question/{id}")
+    @GetMapping(value = "/questions/{id}")
     public QuestionDTO getByIdWithDetails(@PathVariable("id") int id){
         return questionService.getByIdWithDetails(id);
     }
@@ -51,8 +53,11 @@ public class QuestionController {
     @Operation( summary = "Save question.",
             description = "Saves a new question.",
             tags = { "Question" })
-    @ApiResponse(responseCode = "200", description = "successful save", content = @Content(examples = @ExampleObject(value = idreturnschema)))
-    @PostMapping(value = "/question")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode="200", description = "successful save", content = @Content(examples = @ExampleObject(value = idreturnschema))),
+            @ApiResponse(responseCode = "404", description = "user with provided id does not exist", content = @Content)
+            })
+    @PostMapping(value = "/questions")
     public int save(@RequestBody QuestionSaveDTO data){
         return questionService.save(data);
     }
@@ -64,7 +69,7 @@ public class QuestionController {
     @Operation( summary = "Vote question.",
             description = "Votes a specific question.",
             tags = { "Question" })
-    @PutMapping(value = "/question/{id}/vote")
+    @PutMapping(value = "/questions/{id}/vote")
     public Map<String, Integer> voteQuestion(@PathVariable("id") int qid){
         return questionService.vote(qid);
     }

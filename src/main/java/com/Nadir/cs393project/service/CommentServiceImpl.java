@@ -1,6 +1,9 @@
 package com.Nadir.cs393project.service;
 
+import com.Nadir.cs393project.Exception.AnswerNotFoundException;
 import com.Nadir.cs393project.Exception.CommentNotFoundException;
+import com.Nadir.cs393project.Exception.QuestionNotFoundException;
+import com.Nadir.cs393project.Exception.UserNotFoundException;
 import com.Nadir.cs393project.Mapper.AnswerCommentSaveMapper;
 import com.Nadir.cs393project.Mapper.QuestionCommentSaveMapper;
 import com.Nadir.cs393project.dto.AnswerCommentSaveDTO;
@@ -33,6 +36,8 @@ public class CommentServiceImpl implements CommentService {
     AnswerRepo answerRepo;
 
     public Map<String,Integer> save(QuestionCommentSaveDTO dto){
+        questionRepo.findById(dto.getQuestionid()).orElseThrow(QuestionNotFoundException::new);
+        questionRepo.findById(dto.getUserid()).orElseThrow(UserNotFoundException::new);
         CommentforQuestion comment = QuestionCommentSaveMapper.INSTANCE.createCommentfromDTO(dto,questionRepo,userRepo);
         comment.getQuestion().addComment(comment);
         comment.getUser().addComment(comment);
@@ -43,6 +48,8 @@ public class CommentServiceImpl implements CommentService {
         return ids;
     }
     public Map<String,Integer> save(AnswerCommentSaveDTO dto){
+        questionRepo.findById(dto.getAnswerid()).orElseThrow(AnswerNotFoundException::new);
+        questionRepo.findById(dto.getUserid()).orElseThrow(UserNotFoundException::new);
         CommentforAnswer comment = AnswerCommentSaveMapper.INSTANCE.createCommentfromDTO(dto,answerRepo,userRepo);
         comment.getAnswer().addComment(comment);
         comment.getUser().addComment(comment);

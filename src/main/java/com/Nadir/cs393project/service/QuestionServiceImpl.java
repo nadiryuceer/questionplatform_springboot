@@ -1,6 +1,7 @@
 package com.Nadir.cs393project.service;
 
 import com.Nadir.cs393project.Exception.QuestionNotFoundException;
+import com.Nadir.cs393project.Exception.UserNotFoundException;
 import com.Nadir.cs393project.Mapper.QuestionGetAllMapper;
 import com.Nadir.cs393project.Mapper.QuestionGetByIdWithDetailsMapper;
 import com.Nadir.cs393project.Mapper.QuestionSaveMapper;
@@ -28,6 +29,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public int save(QuestionSaveDTO data) {
+        questionRepo.findById(data.getUid()).orElseThrow(UserNotFoundException::new);
         Question q = QuestionSaveMapper.INSTANCE.createFullObjectforSave(data, userRepo,tagRepo);
         for(Tag t : q.getTags()) t.addQuestion(q);
         questionRepo.save(q);
