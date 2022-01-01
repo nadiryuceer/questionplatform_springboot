@@ -10,8 +10,6 @@ import com.Nadir.cs393project.dto.AnswerCommentSaveDTO;
 import com.Nadir.cs393project.dto.QuestionCommentSaveDTO;
 import com.Nadir.cs393project.model.CommentforAnswer;
 import com.Nadir.cs393project.model.CommentforQuestion;
-import com.Nadir.cs393project.model.User;
-import com.Nadir.cs393project.model.Comment;
 import com.Nadir.cs393project.repo.AnswerRepo;
 import com.Nadir.cs393project.repo.CommentRepo;
 import com.Nadir.cs393project.repo.QuestionRepo;
@@ -22,7 +20,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Service

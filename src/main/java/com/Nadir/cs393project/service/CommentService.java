@@ -2,7 +2,6 @@ package com.Nadir.cs393project.service;
 
 import com.Nadir.cs393project.dto.AnswerCommentSaveDTO;
 import com.Nadir.cs393project.dto.QuestionCommentSaveDTO;
-import com.Nadir.cs393project.model.Comment;
 
 import java.util.Map;
 

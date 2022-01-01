@@ -1,8 +1,5 @@
 package com.Nadir.cs393project.dto.QuestionGetByIdWithDetails;
 
-import com.Nadir.cs393project.model.User;
-
-import javax.persistence.ManyToOne;
 import java.util.Date;
 
 public class CommentDTO {

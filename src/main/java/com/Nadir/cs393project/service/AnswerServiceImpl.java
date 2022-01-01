@@ -1,13 +1,11 @@
 package com.Nadir.cs393project.service;
 
 import com.Nadir.cs393project.Exception.AnswerNotFoundException;
-import com.Nadir.cs393project.Exception.CommentNotFoundException;
 import com.Nadir.cs393project.Exception.QuestionNotFoundException;
 import com.Nadir.cs393project.Exception.UserNotFoundException;
 import com.Nadir.cs393project.Mapper.AnswerSaveMapper;
 import com.Nadir.cs393project.dto.AnswerSaveDTO;
 import com.Nadir.cs393project.model.Answer;
-import com.Nadir.cs393project.model.Question;
 import com.Nadir.cs393project.repo.AnswerRepo;
 import com.Nadir.cs393project.repo.QuestionRepo;
 import com.Nadir.cs393project.repo.UserRepo;

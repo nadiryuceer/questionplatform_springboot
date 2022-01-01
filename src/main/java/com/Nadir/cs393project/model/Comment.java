@@ -3,9 +3,7 @@ package com.Nadir.cs393project.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Entity

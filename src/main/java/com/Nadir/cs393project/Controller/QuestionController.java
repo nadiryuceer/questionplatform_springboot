@@ -3,7 +3,6 @@ package com.Nadir.cs393project.Controller;
 import com.Nadir.cs393project.dto.QuestionGetAllDTO;
 import com.Nadir.cs393project.dto.QuestionGetByIdWithDetails.QuestionDTO;
 import com.Nadir.cs393project.dto.QuestionSaveDTO;
-import com.Nadir.cs393project.model.Question;
 import com.Nadir.cs393project.service.QuestionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -15,7 +14,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 

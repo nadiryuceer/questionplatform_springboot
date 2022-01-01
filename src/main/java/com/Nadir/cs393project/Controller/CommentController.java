@@ -2,7 +2,6 @@ package com.Nadir.cs393project.Controller;
 
 import com.Nadir.cs393project.dto.AnswerCommentSaveDTO;
 import com.Nadir.cs393project.dto.QuestionCommentSaveDTO;
-import com.Nadir.cs393project.model.CommentforQuestion;
 import com.Nadir.cs393project.service.CommentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

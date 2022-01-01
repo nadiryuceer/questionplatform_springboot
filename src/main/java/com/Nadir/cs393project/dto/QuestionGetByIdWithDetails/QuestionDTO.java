@@ -1,8 +1,5 @@
 package com.Nadir.cs393project.dto.QuestionGetByIdWithDetails;
 
-import com.Nadir.cs393project.model.Answer;
-import com.Nadir.cs393project.model.CommentforQuestion;
-
 import java.util.Date;
 import java.util.List;
 
