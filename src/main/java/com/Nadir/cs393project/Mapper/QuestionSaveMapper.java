@@ -8,6 +8,7 @@ import com.Nadir.cs393project.repo.UserRepo;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
+import java.util.ArrayList;
 import java.util.List;
 @Mapper(componentModel = "spring")
 public interface QuestionSaveMapper {
@@ -20,6 +21,16 @@ public interface QuestionSaveMapper {
     @AfterMapping
     default void after(QuestionSaveDTO data,@MappingTarget Question question, @Context UserRepo userRepo, @Context TagRepo tagRepo){
         question.setUser(userRepo.getById(data.getUid()));
-        question.setTags(tagRepo.getWithName(data.getTags()));
+        List<Tag> tags = new ArrayList<>();
+        for(String tagname : data.getTags()){
+            Tag tag = tagRepo.getByName(tagname);
+            if(tag==null){
+                tag = new Tag();
+                tag.setName(tagname);
+                tagRepo.save(tag);
+            }
+            tags.add(tag);
+        }
+        question.setTags(tags);
     }
 }
