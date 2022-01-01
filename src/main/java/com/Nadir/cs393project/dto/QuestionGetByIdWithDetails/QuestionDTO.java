@@ -13,7 +13,7 @@ public class QuestionDTO {
     private Date publishdate;
     private int views;
     private int votes;
-    private List<String> tagnames;
+    private List<String> tags;
     private List<CommentDTO> comments;
     private List<AnswerDTO> answers;
     private String user;
@@ -72,10 +72,10 @@ public class QuestionDTO {
     public void setUser(String user) {
         this.user = user;
     }
-    public List<String> getTagnames() {
-        return tagnames;
+    public List<String> getTags() {
+        return tags;
     }
-    public void setTagnames(List<String> tagnames) {
-        this.tagnames = tagnames;
+    public void setTags(List<String> tags) {
+        this.tags = tags;
     }
 }

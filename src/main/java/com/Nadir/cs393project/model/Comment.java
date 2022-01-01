@@ -9,7 +9,7 @@ import java.util.List;
 
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Entity
-@Table(name = "Comment")
+@Table(name = "comments")
 @DiscriminatorColumn(name = "CM_TYPE", length = 5)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public abstract class Comment {
