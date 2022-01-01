@@ -51,11 +51,7 @@ public class AnswerServiceImpl implements AnswerService {
         return Collections.singletonMap("votecount",votecount);
     }
     public Map<String,Boolean> update(int id, String txt){
-        try{
-            answerRepo.getById(id);
-        }catch (Exception e){
-            throw new AnswerNotFoundException();
-        }
+        answerRepo.findById(id).orElseThrow(AnswerNotFoundException::new);
         answerRepo.update(id,txt);
         return Collections.singletonMap("success",true);
     }

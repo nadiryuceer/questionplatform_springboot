@@ -79,11 +79,7 @@ public class CommentServiceImpl implements CommentService {
         return Collections.singletonMap("success", true);
     }
     public Map<String,Boolean> update(int id, String txt){
-        try{
-            commentRepo.getById(id);
-        }catch (Exception e){
-            throw new CommentNotFoundException();
-        }
+        commentRepo.findById(id).orElseThrow(CommentNotFoundException::new);
         commentRepo.update(id,txt);
         return Collections.singletonMap("success",true);
     }
