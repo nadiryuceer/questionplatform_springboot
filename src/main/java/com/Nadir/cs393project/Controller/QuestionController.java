@@ -30,11 +30,10 @@ public class QuestionController {
     @Operation( summary = "Get all questions.",
             description = "Returns all questions.",
             tags = { "Question" })
-    @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(schema = @Schema(example = tagschema)))
     @GetMapping(value = "/questions")
     @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(array = @ArraySchema(schema = @Schema(implementation = QuestionGetAllDTO.class))))
-    public List<QuestionGetAllDTO> getAll(@RequestBody(required = false) Map<String, String[]> tags){
-        return (tags==null) ? questionService.getAll() : questionService.getWithTags(tags.get("tags"));
+    public List<QuestionGetAllDTO> getAll(@RequestParam(value = "tags", required = false) String[] tags){
+        return (tags==null) ? questionService.getAll() : questionService.getWithTags(tags);
     }
 
     @ApiResponses(value = {

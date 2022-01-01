@@ -16,7 +16,7 @@ public class Question {
     private int id;
     private String title;
     private String descript;
-    private Date publishdate;
+    private Date publishdate = new Date();
     private int views=0;
     private int votes=0;
     @OneToMany(mappedBy = "question")
