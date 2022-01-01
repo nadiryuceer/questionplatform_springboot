@@ -3,7 +3,6 @@ package com.Nadir.cs393project.dto;
 public class AnswerCommentSaveDTO {
     String txt;
     int userid;
-    int answerid;
 
     public int getUserid() {
         return userid;
@@ -16,11 +15,5 @@ public class AnswerCommentSaveDTO {
     }
     public void setTxt(String txt) {
         this.txt = txt;
-    }
-    public int getAnswerid() {
-        return answerid;
-    }
-    public void setAnswerid(int answerid) {
-        this.answerid = answerid;
     }
 }

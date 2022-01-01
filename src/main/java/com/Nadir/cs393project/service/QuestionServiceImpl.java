@@ -57,14 +57,18 @@ public class QuestionServiceImpl implements QuestionService {
         }
     }
     @Transactional
-    public Map<String, Integer> vote(int id){
+    public Map<String, Integer> vote(int id, boolean isupvote){
         int votecount;
         try {
             votecount = questionRepo.getById(id).getVotes();
         } catch(Exception e){
             throw new QuestionNotFoundException();
         }
-        questionRepo.vote(id, ++votecount);
+        if (isupvote) {
+            questionRepo.vote(id, ++votecount);
+        } else {
+            questionRepo.vote(id, --votecount);
+        }
         return Collections.singletonMap("votecount",votecount);
     }
 

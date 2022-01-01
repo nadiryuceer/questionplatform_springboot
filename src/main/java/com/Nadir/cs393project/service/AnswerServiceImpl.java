@@ -28,10 +28,10 @@ public class AnswerServiceImpl implements AnswerService {
     @Autowired
     UserRepo userRepo;
 
-    public Map<String,Integer> save(AnswerSaveDTO answerDTO){
-        questionRepo.findById(answerDTO.getQid()).orElseThrow(QuestionNotFoundException::new);
+    public Map<String,Integer> save(AnswerSaveDTO answerDTO, int qid){
+        questionRepo.findById(qid).orElseThrow(QuestionNotFoundException::new);
         userRepo.findById(answerDTO.getUid()).orElseThrow(UserNotFoundException::new);
-        Answer answer = AnswerSaveMapper.INSTANCE.createAnswerfromDTO(answerDTO, questionRepo,userRepo);
+        Answer answer = AnswerSaveMapper.INSTANCE.createAnswerfromDTO(answerDTO, qid, questionRepo,userRepo);
         answer.getQuestion().addAnswer(answer);
         answer.getUser().addAnswer(answer);
         answerRepo.save(answer);
@@ -40,14 +40,18 @@ public class AnswerServiceImpl implements AnswerService {
         ids.put("question_id",answer.getQuestion().getId());
         return ids;
     }
-    public Map<String, Integer> vote(int id){
+    public Map<String, Integer> vote(int id, boolean isupvote){
         int votecount;
         try{
             votecount = answerRepo.getById(id).getVotes();
         }catch (Exception e){
             throw new AnswerNotFoundException();
         }
-        answerRepo.vote(id, ++votecount);
+        if (isupvote) {
+            answerRepo.vote(id, ++votecount);
+        } else {
+            answerRepo.vote(id, --votecount);
+        }
         return Collections.singletonMap("votecount",votecount);
     }
     public Map<String,Boolean> update(int id, String txt){

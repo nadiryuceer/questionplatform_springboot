@@ -2,6 +2,7 @@ package com.Nadir.cs393project.Controller;
 
 import com.Nadir.cs393project.dto.AnswerCommentSaveDTO;
 import com.Nadir.cs393project.dto.QuestionCommentSaveDTO;
+import com.Nadir.cs393project.dto.TextUpdateDTO;
 import com.Nadir.cs393project.service.CommentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -20,7 +21,6 @@ public class CommentController {
     public final String commentanswerreturnschema = "{\n    \"comment_id\": 0,\n    \"answer_id\": 0\n}";
     public final String votereturnschema = "{\n    \"votecount\": 0\n}";
     public final String successschema = "{\n    \"success\": true\n}";
-    public final String textupdateschema = "{\n    \"txt\": \"string\"\n}";
 
     @Autowired
     CommentService commentService;
@@ -32,10 +32,9 @@ public class CommentController {
             @ApiResponse(responseCode = "200", description = "successful operation" , content = @Content(examples = @ExampleObject(value = commentquestionreturnschema))),
             @ApiResponse(responseCode = "404", description = "question/user with provided id does not exist", content = @Content)
     })
-    @PostMapping(path = "/questions/{id}/comments")
-    Map<String,Integer> addCommentforQuestion(@PathVariable("id") int qid, @RequestBody QuestionCommentSaveDTO comment){
-        comment.setQuestionid(qid);
-        return commentService.save(comment);
+    @PostMapping(path = "/questions/{qid}/comments")
+    Map<String,Integer> addCommentforQuestion(@PathVariable("qid") int qid, @RequestBody QuestionCommentSaveDTO comment){
+        return commentService.save(comment, qid);
     }
 
     @Operation( summary = "AddCommenttoAnswer.",
@@ -45,22 +44,33 @@ public class CommentController {
             @ApiResponse(responseCode = "200", description = "successful operation" , content = @Content(examples = @ExampleObject(value = commentanswerreturnschema))),
             @ApiResponse(responseCode = "404", description = "answer/user with provided id does not exist", content = @Content)
     })
-    @PostMapping(path = "/answers/{id}/comments")
-    Map<String,Integer> addCommentforAnswer(@PathVariable("id") int answerid, @RequestBody AnswerCommentSaveDTO comment){
-        comment.setAnswerid(answerid);
-        return commentService.save(comment);
+    @PostMapping(path = "/answers/{answerid}/comments")
+    Map<String,Integer> addCommentforAnswer(@PathVariable("answerid") int answerid, @RequestBody AnswerCommentSaveDTO comment){
+        return commentService.save(comment, answerid);
     }
 
-    @Operation( summary = "Vote comment.",
-            description = "Votes a specific comment.",
+    @Operation( summary = "Upvote comment.",
+            description = "Upvotes a specific comment.",
             tags = { "Comment" })
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "successful operation" , content = @Content(examples = @ExampleObject(value = votereturnschema))),
             @ApiResponse(responseCode = "404", description = "comment with provided id does not exist", content = @Content)
     })
-    @PutMapping(value = "/comments/{id}/votes")
-    public Map<String, Integer> voteComment(@PathVariable("id") int cid){
-        return commentService.vote(cid);
+    @PutMapping(value = "/comments/{id}/upvote")
+    public Map<String, Integer> upvoteComment(@PathVariable("id") int cid){
+        return commentService.vote(cid, true);
+    }
+
+    @Operation( summary = "Downvote comment.",
+            description = "Downvotes a specific comment.",
+            tags = { "Comment" })
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "successful operation" , content = @Content(examples = @ExampleObject(value = votereturnschema))),
+            @ApiResponse(responseCode = "404", description = "comment with provided id does not exist", content = @Content)
+    })
+    @PutMapping(value = "/comments/{id}/downvote")
+    public Map<String, Integer> downvoteComment(@PathVariable("id") int cid){
+        return commentService.vote(cid, false);
     }
 
     @Operation( summary = "Delete comment.",
@@ -78,13 +88,12 @@ public class CommentController {
     @Operation( summary = "UpdatetextofComment.",
             description = "Updates the text inside comment.",
             tags = { "Comment" })
-    @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(schema = @Schema(example = textupdateschema)))
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(examples = @ExampleObject(value = successschema))),
             @ApiResponse(responseCode = "404", description = "comment with provided id does not exist", content = @Content)
     })
     @PutMapping(value = "/comments/{id}")
-    public Map<String, Boolean> update(@PathVariable("id") int id, @RequestBody Map<String,String> txt){
-        return commentService.update(id,txt.get("txt"));
+    public Map<String, Boolean> update(@PathVariable("id") int id, @RequestBody TextUpdateDTO txt){
+        return commentService.update(id,txt.getTxt());
     }
 }

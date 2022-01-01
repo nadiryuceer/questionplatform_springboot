@@ -63,11 +63,23 @@ public class QuestionController {
             @ApiResponse(responseCode = "200", description = "successful save", content = @Content(examples = @ExampleObject(value = votereturnschema))),
             @ApiResponse(responseCode = "404", description = "question with provided id does not exist", content = @Content)
     })
-    @Operation( summary = "Vote question.",
-            description = "Votes a specific question.",
+    @Operation( summary = "Upvote question.",
+            description = "Upvotes a specific question.",
             tags = { "Question" })
-    @PutMapping(value = "/questions/{id}/vote")
-    public Map<String, Integer> voteQuestion(@PathVariable("id") int qid){
-        return questionService.vote(qid);
+    @PutMapping(value = "/questions/{id}/upvote")
+    public Map<String, Integer> upvoteQuestion(@PathVariable("id") int qid){
+        return questionService.vote(qid, true);
+    }
+
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "successful save", content = @Content(examples = @ExampleObject(value = votereturnschema))),
+            @ApiResponse(responseCode = "404", description = "question with provided id does not exist", content = @Content)
+    })
+    @Operation( summary = "Downvote question.",
+            description = "Downvotes a specific question.",
+            tags = { "Question" })
+    @PutMapping(value = "/questions/{id}/downvote")
+    public Map<String, Integer> downvoteQuestion(@PathVariable("id") int qid){
+        return questionService.vote(qid, false);
     }
 }

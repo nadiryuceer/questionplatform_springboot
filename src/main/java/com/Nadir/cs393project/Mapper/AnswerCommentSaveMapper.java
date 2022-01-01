@@ -16,17 +16,17 @@ import org.mapstruct.factory.Mappers;
 public interface AnswerCommentSaveMapper {
     AnswerCommentSaveMapper INSTANCE = Mappers.getMapper( AnswerCommentSaveMapper.class );
 
-    CommentforAnswer createCommentfromDTO(AnswerCommentSaveDTO dto, @Context AnswerRepo answerRepo, @Context UserRepo userRepo);
+    CommentforAnswer createCommentfromDTO(AnswerCommentSaveDTO dto, int answerid, @Context AnswerRepo answerRepo, @Context UserRepo userRepo);
 
     @AfterMapping
-    default void after(AnswerCommentSaveDTO data, @MappingTarget CommentforAnswer comment, @Context AnswerRepo answerRepo, @Context UserRepo userRepo){
+    default void after(AnswerCommentSaveDTO data, int answerid, @MappingTarget CommentforAnswer comment, @Context AnswerRepo answerRepo, @Context UserRepo userRepo){
         try{
             comment.setUser(userRepo.getById(data.getUserid()));
         }catch (Exception e){
             throw new UserNotFoundException();
         }
         try{
-            comment.setAnswer(answerRepo.getById(data.getAnswerid()));
+            comment.setAnswer(answerRepo.getById(answerid));
         }catch (Exception e){
             throw new AnswerNotFoundException();
         }

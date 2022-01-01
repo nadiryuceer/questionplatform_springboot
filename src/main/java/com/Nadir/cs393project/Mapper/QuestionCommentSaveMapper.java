@@ -15,12 +15,12 @@ public interface QuestionCommentSaveMapper {
 
     QuestionCommentSaveMapper INSTANCE = Mappers.getMapper( QuestionCommentSaveMapper.class );
 
-    CommentforQuestion createCommentfromDTO(QuestionCommentSaveDTO dto, @Context QuestionRepo questionRepo, @Context UserRepo userRepo);
+    CommentforQuestion createCommentfromDTO(QuestionCommentSaveDTO dto, int qid, @Context QuestionRepo questionRepo, @Context UserRepo userRepo);
 
     @AfterMapping
-    default void after(QuestionCommentSaveDTO data, @MappingTarget CommentforQuestion comment, @Context QuestionRepo questionRepo ,@Context UserRepo userRepo){
+    default void after(QuestionCommentSaveDTO data, int qid, @MappingTarget CommentforQuestion comment, @Context QuestionRepo questionRepo ,@Context UserRepo userRepo){
         comment.setUser(userRepo.getById(data.getUserid()));
-        comment.setQuestion(questionRepo.getById(data.getQuestionid()));
+        comment.setQuestion(questionRepo.getById(qid));
     }
 
 }

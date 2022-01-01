@@ -12,5 +12,5 @@ public interface QuestionService {
     public List<QuestionGetAllDTO> getAll();
     public QuestionDTO getByIdWithDetails(int id);
     public List<QuestionGetAllDTO> getWithTags(String[] tags);
-    public Map<String,Integer> vote(int id);
+    public Map<String,Integer> vote(int id, boolean isupvote);
 }

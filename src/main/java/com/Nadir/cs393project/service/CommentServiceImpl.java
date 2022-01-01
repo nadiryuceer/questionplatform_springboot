@@ -34,10 +34,10 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     AnswerRepo answerRepo;
 
-    public Map<String,Integer> save(QuestionCommentSaveDTO dto){
-        questionRepo.findById(dto.getQuestionid()).orElseThrow(QuestionNotFoundException::new);
+    public Map<String,Integer> save(QuestionCommentSaveDTO dto, int qid){
+        questionRepo.findById(qid).orElseThrow(QuestionNotFoundException::new);
         questionRepo.findById(dto.getUserid()).orElseThrow(UserNotFoundException::new);
-        CommentforQuestion comment = QuestionCommentSaveMapper.INSTANCE.createCommentfromDTO(dto,questionRepo,userRepo);
+        CommentforQuestion comment = QuestionCommentSaveMapper.INSTANCE.createCommentfromDTO(dto,qid,questionRepo,userRepo);
         comment.getQuestion().addComment(comment);
         comment.getUser().addComment(comment);
         commentRepo.save(comment);
@@ -46,10 +46,10 @@ public class CommentServiceImpl implements CommentService {
         ids.put("question_id", comment.getQuestion().getId());
         return ids;
     }
-    public Map<String,Integer> save(AnswerCommentSaveDTO dto){
-        questionRepo.findById(dto.getAnswerid()).orElseThrow(AnswerNotFoundException::new);
+    public Map<String,Integer> save(AnswerCommentSaveDTO dto, int answerid){
+        questionRepo.findById(answerid).orElseThrow(AnswerNotFoundException::new);
         questionRepo.findById(dto.getUserid()).orElseThrow(UserNotFoundException::new);
-        CommentforAnswer comment = AnswerCommentSaveMapper.INSTANCE.createCommentfromDTO(dto,answerRepo,userRepo);
+        CommentforAnswer comment = AnswerCommentSaveMapper.INSTANCE.createCommentfromDTO(dto, answerid,answerRepo,userRepo);
         comment.getAnswer().addComment(comment);
         comment.getUser().addComment(comment);
         commentRepo.save(comment);
@@ -58,14 +58,18 @@ public class CommentServiceImpl implements CommentService {
         ids.put("answer_id", comment.getAnswer().getId());
         return ids;
     }
-    public Map<String, Integer> vote(int id){
+    public Map<String, Integer> vote(int id, boolean isupvote){
         int votecount;
         try{
             votecount = commentRepo.getById(id).getVotes();
         } catch(Exception e){
             throw new CommentNotFoundException();
         }
-        commentRepo.vote(id, ++votecount);
+        if (isupvote) {
+            commentRepo.vote(id, ++votecount);
+        } else {
+            commentRepo.vote(id, --votecount);
+        }
         return Collections.singletonMap("votecount",votecount);
     }
 

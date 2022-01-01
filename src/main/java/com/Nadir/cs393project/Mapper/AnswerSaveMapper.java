@@ -15,11 +15,11 @@ public interface AnswerSaveMapper {
 
     AnswerSaveMapper INSTANCE = Mappers.getMapper( AnswerSaveMapper.class );
 
-    Answer createAnswerfromDTO(AnswerSaveDTO dto, @Context QuestionRepo questionRepo, @Context UserRepo userRepo);
+    Answer createAnswerfromDTO(AnswerSaveDTO dto, int qid, @Context QuestionRepo questionRepo, @Context UserRepo userRepo);
 
     @AfterMapping
-    default void addUserandQuestion(AnswerSaveDTO dto, @MappingTarget Answer answer, @Context QuestionRepo questionRepo, @Context UserRepo userRepo){
-        answer.setQuestion(questionRepo.getById(dto.getQid()));
+    default void addUserandQuestion(AnswerSaveDTO dto, int qid, @MappingTarget Answer answer, @Context QuestionRepo questionRepo, @Context UserRepo userRepo){
+        answer.setQuestion(questionRepo.getById(qid));
         answer.setUser(userRepo.getById(dto.getUid()));
     }
 }
