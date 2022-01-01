@@ -36,7 +36,7 @@ public class CommentServiceImpl implements CommentService {
 
     public Map<String,Integer> save(QuestionCommentSaveDTO dto, int qid){
         questionRepo.findById(qid).orElseThrow(QuestionNotFoundException::new);
-        questionRepo.findById(dto.getUserid()).orElseThrow(UserNotFoundException::new);
+        userRepo.findById(dto.getUserid()).orElseThrow(UserNotFoundException::new);
         CommentforQuestion comment = QuestionCommentSaveMapper.INSTANCE.createCommentfromDTO(dto,qid,questionRepo,userRepo);
         comment.getQuestion().addComment(comment);
         comment.getUser().addComment(comment);
@@ -47,8 +47,8 @@ public class CommentServiceImpl implements CommentService {
         return ids;
     }
     public Map<String,Integer> save(AnswerCommentSaveDTO dto, int answerid){
-        questionRepo.findById(answerid).orElseThrow(AnswerNotFoundException::new);
-        questionRepo.findById(dto.getUserid()).orElseThrow(UserNotFoundException::new);
+        answerRepo.findById(answerid).orElseThrow(AnswerNotFoundException::new);
+        userRepo.findById(dto.getUserid()).orElseThrow(UserNotFoundException::new);
         CommentforAnswer comment = AnswerCommentSaveMapper.INSTANCE.createCommentfromDTO(dto, answerid,answerRepo,userRepo);
         comment.getAnswer().addComment(comment);
         comment.getUser().addComment(comment);
