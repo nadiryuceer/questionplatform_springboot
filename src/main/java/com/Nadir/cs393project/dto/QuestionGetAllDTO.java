@@ -6,7 +6,7 @@ import java.util.List;
 public class QuestionGetAllDTO {
     private String title;
     private String descript;
-    private List<String> tagnames;
+    private List<String> tags;
     private Date publishdate;
     private String askedby;
     private int answercount;
@@ -38,11 +38,11 @@ public class QuestionGetAllDTO {
     public void setAnswercount(int answercount) {
         this.answercount = answercount;
     }
-    public List<String> getTagnames() {
-        return tagnames;
+    public List<String> getTags() {
+        return tags;
     }
-    public void setTagnames(List<String> tagnames) {
-        this.tagnames = tagnames;
+    public void setTags(List<String> tags) {
+        this.tags = tags;
     }
     public int getVotes() {
         return votes;

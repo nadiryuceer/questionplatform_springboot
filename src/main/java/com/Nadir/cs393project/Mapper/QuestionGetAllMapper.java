@@ -18,7 +18,7 @@ public interface QuestionGetAllMapper {
 
     QuestionGetAllMapper INSTANCE = Mappers.getMapper( QuestionGetAllMapper.class );
 
-    @Mapping(source = "tags", target = "tagnames", qualifiedByName = "getTagNames")
+    @Mapping(source = "tags", target = "tags", qualifiedByName = "getTagNames")
     @Mapping(source = "user.nickname", target = "askedby")
     @Mapping(source = "answers", target = "answercount", qualifiedByName = "countAnswers")
     @Mapping(source = "descript", target = "descript", qualifiedByName = "cropString")

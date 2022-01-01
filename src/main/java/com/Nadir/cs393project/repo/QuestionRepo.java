@@ -17,6 +17,5 @@ public interface QuestionRepo extends JpaRepository<Question,Integer> {
     List<Question> getAllWithTags(String[] tags);
     @Modifying
     @Query("UPDATE Question q SET q.votes = ?2 WHERE q.id = ?1")
-    @Transactional
     void vote(int qid, int updatedvote);
     }

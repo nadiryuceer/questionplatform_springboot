@@ -14,12 +14,14 @@ import com.Nadir.cs393project.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Service
+@Transactional
 public class AnswerServiceImpl implements AnswerService {
     @Autowired
     AnswerRepo answerRepo;
