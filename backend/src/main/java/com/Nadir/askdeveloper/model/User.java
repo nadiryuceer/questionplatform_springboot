@@ -10,12 +10,13 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String nickname;
+    private String username;
+
+    @Column(unique = true)
+    private String email;
     private String firstName;
     private String lastName;
-    private String hashedPass;
+    //private String hashedPass;
     @OneToMany(mappedBy = "user")
     private List<Question> questions;
     @OneToMany(mappedBy = "user")
@@ -27,52 +28,67 @@ public class User {
 
     }
 
-    public int getId() {
-        return id;
+    public String getUsername() {
+        return username;
     }
-    public void setId(int id) {
-        this.id = id;
+
+    public void setUsername(String username) {
+        this.username = username;
     }
-    public String getNickname() {
-        return nickname;
+
+    public String getEmail() {
+        return email;
     }
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+
+    public void setEmail(String email) {
+        this.email = email;
     }
+
     public String getFirstName() {
         return firstName;
     }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
     public String getLastName() {
         return lastName;
     }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
     public List<Question> getQuestions() {
         return questions;
     }
+
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
     }
+
     public List<Answer> getAnswers() {
         return answers;
     }
+
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
     }
+
     public List<Comment> getComments() {
         return comments;
     }
+
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
+
     public void addAnswer(Answer answer){
         if(this.answers==null) this.answers = new ArrayList<>();
         this.answers.add(answer);
     }
+
     public void addComment(Comment comment){
         if(this.comments==null) this.comments = new ArrayList<>();
         this.comments.add(comment);

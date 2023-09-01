@@ -21,7 +21,7 @@ public interface AnswerCommentSaveMapper {
     @AfterMapping
     default void after(AnswerCommentSaveDTO data, int answerid, @MappingTarget CommentforAnswer comment, @Context AnswerRepo answerRepo, @Context UserRepo userRepo){
         try{
-            comment.setUser(userRepo.getById(data.getUserid()));
+            comment.setUser(userRepo.getByUserName(data.getUsername()));
         }catch (Exception e){
             throw new UserNotFoundException();
         }

@@ -29,7 +29,7 @@ public class AnswerServiceImpl implements AnswerService {
 
     public Map<String,Integer> save(AnswerSaveDTO answerDTO, int qid){
         questionRepo.findById(qid).orElseThrow(QuestionNotFoundException::new);
-        userRepo.findById(answerDTO.getUid()).orElseThrow(UserNotFoundException::new);
+        userRepo.findByUserName(answerDTO.getUsername()).orElseThrow(UserNotFoundException::new);
         Answer answer = AnswerSaveMapper.INSTANCE.createAnswerfromDTO(answerDTO, qid, questionRepo,userRepo);
         answer.getQuestion().addAnswer(answer);
         answer.getUser().addAnswer(answer);
@@ -53,9 +53,9 @@ public class AnswerServiceImpl implements AnswerService {
         }
         return Collections.singletonMap("votecount",votecount);
     }
-    public Map<String,Boolean> update(int id, String txt){
+    public Map<String,Boolean> update(int id, String text){
         answerRepo.findById(id).orElseThrow(AnswerNotFoundException::new);
-        answerRepo.update(id,txt);
+        answerRepo.update(id,text);
         return Collections.singletonMap("success",true);
     }
 }

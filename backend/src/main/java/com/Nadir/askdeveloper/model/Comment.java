@@ -14,7 +14,7 @@ public abstract class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String txt;
+    private String text;
     private Date publishdate=new Date();
     private int votes=0;
     @ManyToOne
@@ -28,12 +28,15 @@ public abstract class Comment {
     public void setId(int id) {
         this.id = id;
     }
-    public String getTxt() {
-        return txt;
+
+    public String getText() {
+        return text;
     }
-    public void setTxt(String txt) {
-        this.txt = txt;
+
+    public void setText(String text) {
+        this.text = text;
     }
+
     public int getVotes() {
         return votes;
     }

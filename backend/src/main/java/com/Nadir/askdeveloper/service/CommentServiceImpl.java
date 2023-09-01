@@ -36,7 +36,7 @@ public class CommentServiceImpl implements CommentService {
 
     public Map<String,Integer> save(QuestionCommentSaveDTO dto, int qid){
         questionRepo.findById(qid).orElseThrow(QuestionNotFoundException::new);
-        userRepo.findById(dto.getUserid()).orElseThrow(UserNotFoundException::new);
+        userRepo.findByUserName(dto.getUsername()).orElseThrow(UserNotFoundException::new);
         CommentforQuestion comment = QuestionCommentSaveMapper.INSTANCE.createCommentfromDTO(dto,qid,questionRepo,userRepo);
         comment.getQuestion().addComment(comment);
         comment.getUser().addComment(comment);
@@ -48,7 +48,7 @@ public class CommentServiceImpl implements CommentService {
     }
     public Map<String,Integer> save(AnswerCommentSaveDTO dto, int answerid){
         answerRepo.findById(answerid).orElseThrow(AnswerNotFoundException::new);
-        userRepo.findById(dto.getUserid()).orElseThrow(UserNotFoundException::new);
+        userRepo.findByUserName(dto.getUsername()).orElseThrow(UserNotFoundException::new);
         CommentforAnswer comment = AnswerCommentSaveMapper.INSTANCE.createCommentfromDTO(dto, answerid,answerRepo,userRepo);
         comment.getAnswer().addComment(comment);
         comment.getUser().addComment(comment);
@@ -81,9 +81,9 @@ public class CommentServiceImpl implements CommentService {
         }
         return Collections.singletonMap("success", true);
     }
-    public Map<String,Boolean> update(int id, String txt){
+    public Map<String,Boolean> update(int id, String text){
         commentRepo.findById(id).orElseThrow(CommentNotFoundException::new);
-        commentRepo.update(id,txt);
+        commentRepo.update(id,text);
         return Collections.singletonMap("success",true);
     }
 }

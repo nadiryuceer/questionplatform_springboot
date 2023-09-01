@@ -31,31 +31,32 @@ class AskDeveloperApplicationTests {
     UserRepo userRepo;
 
 
-    User createUser(String name){
+    User createUser(String name, String email){
         User user = new User();
-        user.setNickname(name);
+        user.setUsername(name);
+        user.setEmail(email);
         user.setFirstName("test");
         user.setLastName("user");
         return user;
     }
-    QuestionSaveDTO createQuestion(int uid, String title, String desc){
+    QuestionSaveDTO createQuestion(String username, String title, String desc){
         QuestionSaveDTO question = new QuestionSaveDTO();
         question.setTitle(title);
-        question.setDescript(desc);
-        question.setUid(uid);
+        question.setDescription(desc);
+        question.setUsername(username);
         return question;
     }
     Comment createCommentforQuestion(User user, String text){
         Comment comment = new CommentforQuestion();
         comment.setUser(user);
-        comment.setTxt(text);
+        comment.setText(text);
         return comment;
     }
 
     Comment createCommentforAnswer(User user, String text){
         Comment comment = new CommentforAnswer();
         comment.setUser(user);
-        comment.setTxt(text);
+        comment.setText(text);
         return comment;
     }
     Tag createTag(String name){
@@ -67,16 +68,16 @@ class AskDeveloperApplicationTests {
         Answer answer = new Answer();
         answer.setUser(user);
         answer.setQuestion(question);
-        answer.setTxt(text);
+        answer.setText(text);
         return answer;
     }
 
     @Test
     void UserSaveTest(){
-        User user1 = createUser("testuser");
+        User user1 = createUser("testuser", "testuser@gmail.com");
         userService.save(user1);
         userService.get("testuser");
-        assertEquals("user added", user1.getNickname(), userService.get(user1.getNickname()).getNickname());
+        assertEquals("user added", user1.getUsername(), userService.get(user1.getUsername()).getUsername());
     }
 
 }

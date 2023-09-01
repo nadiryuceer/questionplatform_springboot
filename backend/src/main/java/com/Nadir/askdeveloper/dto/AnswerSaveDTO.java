@@ -1,19 +1,21 @@
 package com.Nadir.askdeveloper.dto;
 
 public class AnswerSaveDTO {
-    String txt;
-    int uid;
+    private String text;
+    private String username;
 
-    public String getTxt() {
-        return txt;
+    public String getText() {
+        return text;
     }
-    public void setTxt(String txt) {
-        this.txt = txt;
+    public void setText(String text) {
+        this.text = text;
     }
-    public int getUid() {
-        return uid;
+
+    public String getUsername() {
+        return username;
     }
-    public void setUid(int uid) {
-        this.uid = uid;
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

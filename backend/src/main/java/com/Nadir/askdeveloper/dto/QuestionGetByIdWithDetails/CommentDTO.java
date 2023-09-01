@@ -4,10 +4,10 @@ import java.util.Date;
 
 public class CommentDTO {
     private int id;
-    private String txt;
+    private String text;
     private Date publishdate;
     private int votes;
-    private String user;
+    private String username;
 
     public int getId() {
         return id;
@@ -15,11 +15,11 @@ public class CommentDTO {
     public void setId(int id) {
         this.id = id;
     }
-    public String getTxt() {
-        return txt;
+    public String getText() {
+        return text;
     }
-    public void setTxt(String txt) {
-        this.txt = txt;
+    public void setText(String text) {
+        this.text = text;
     }
     public Date getPublishdate() {
         return publishdate;
@@ -33,10 +33,12 @@ public class CommentDTO {
     public void setVotes(int votes) {
         this.votes = votes;
     }
-    public String getUser() {
-        return user;
+
+    public String getUsername() {
+        return username;
     }
-    public void setUser(String user) {
-        this.user = user;
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

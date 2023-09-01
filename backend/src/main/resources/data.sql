@@ -1,4 +1,4 @@
-INSERT INTO users (id,first_name,last_name,nickname) values (1,'Nadir','Yüceer','Terminator');
-INSERT INTO users (id,first_name,last_name,nickname) values (2,'Ahmet','Vural', 'PcNerd');
-INSERT INTO question (id, descript, publishdate, title, views, votes, user_id) values (1,'desc', CURTIME(),'title', 0, 0 ,1);
+INSERT INTO users (username,email,first_name,last_name) values ('Terminator','terminator@gmail.com','Nadir','Yüceer');
+INSERT INTO users (username,email,first_name,last_name) values ('PcNerd', 'thenerd@yahoo.com','Ahmet','Vural' );
+INSERT INTO question (id, description, publishdate, title, views, votes, username) values (1,'desc', CURTIME(),'title', 0, 0 ,'Terminator');
 INSERT INTO tag (id, name) values (1,'springboot');

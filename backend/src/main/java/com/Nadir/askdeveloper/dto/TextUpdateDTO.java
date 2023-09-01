@@ -1,12 +1,13 @@
 package com.Nadir.askdeveloper.dto;
 
 public class TextUpdateDTO {
-    String txt;
+    private String text;
 
-    public String getTxt() {
-        return txt;
+    public String getText() {
+        return text;
     }
-    public void setTxt(String txt) {
-        this.txt = txt;
+
+    public void setText(String text) {
+        this.text = text;
     }
 }

@@ -93,6 +93,6 @@ public class CommentController {
     })
     @PutMapping(value = "/comments/{id}")
     public Map<String, Boolean> update(@PathVariable("id") int id, @RequestBody TextUpdateDTO txt){
-        return commentService.update(id,txt.getTxt());
+        return commentService.update(id,txt.getText());
     }
 }

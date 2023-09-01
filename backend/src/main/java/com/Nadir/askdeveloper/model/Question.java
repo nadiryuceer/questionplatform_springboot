@@ -15,7 +15,7 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
-    private String descript;
+    private String description;
     private Date publishdate = new Date();
     private int views=0;
     private int votes=0;
@@ -24,6 +24,7 @@ public class Question {
     @OneToMany(mappedBy = "question")
     private List<Answer> answers;
     @ManyToOne
+    @JoinColumn(name="username", nullable = false)
     private User user;
     @ManyToMany
     @JoinTable(joinColumns =
@@ -48,12 +49,15 @@ public class Question {
     public void setTitle(String title) {
         this.title = title;
     }
-    public String getDescript() {
-        return descript;
+
+    public String getDescription() {
+        return description;
     }
-    public void setDescript(String descript) {
-        this.descript = descript;
+
+    public void setDescription(String description) {
+        this.description = description;
     }
+
     public Date getPublishdate() {
         return publishdate;
     }

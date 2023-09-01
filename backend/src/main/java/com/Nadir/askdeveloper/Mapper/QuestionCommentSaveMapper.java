@@ -19,7 +19,7 @@ public interface QuestionCommentSaveMapper {
 
     @AfterMapping
     default void after(QuestionCommentSaveDTO data, int qid, @MappingTarget CommentforQuestion comment, @Context QuestionRepo questionRepo ,@Context UserRepo userRepo){
-        comment.setUser(userRepo.getById(data.getUserid()));
+        comment.setUser(userRepo.getByUserName(data.getUsername()));
         comment.setQuestion(questionRepo.getById(qid));
     }
 

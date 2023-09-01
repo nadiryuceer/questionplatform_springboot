@@ -30,7 +30,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public int save(QuestionSaveDTO data) {
-        userRepo.findById(data.getUid()).orElseThrow(UserNotFoundException::new);
+        userRepo.findByUserName(data.getUsername()).orElseThrow(UserNotFoundException::new);
         Question q = QuestionSaveMapper.INSTANCE.createFullObjectforSave(data, userRepo,tagRepo);
         for(Tag t : q.getTags()) t.addQuestion(q);
         questionRepo.save(q);

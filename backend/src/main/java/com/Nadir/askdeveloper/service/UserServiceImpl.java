@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    public User get(String nickname) {
-        return userRepo.getByName(nickname);
+    public User get(String username) {
+        return userRepo.getByUserName(username);
     }
 }

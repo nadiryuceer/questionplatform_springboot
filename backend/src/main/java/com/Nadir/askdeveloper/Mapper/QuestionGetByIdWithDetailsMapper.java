@@ -14,7 +14,7 @@ public interface QuestionGetByIdWithDetailsMapper {
     QuestionDTO convertQuestiontoDTO(Question question);
 
     default String map(User user){
-        return user.getNickname();
+        return user.getUsername();
     }
     default String map(Tag tag){return tag.getName();}
 

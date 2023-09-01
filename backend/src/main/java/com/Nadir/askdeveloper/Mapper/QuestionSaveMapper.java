@@ -20,7 +20,7 @@ public interface QuestionSaveMapper {
 
     @AfterMapping
     default void after(QuestionSaveDTO data,@MappingTarget Question question, @Context UserRepo userRepo, @Context TagRepo tagRepo){
-        question.setUser(userRepo.getById(data.getUid()));
+        question.setUser(userRepo.getByUserName(data.getUsername()));
         List<Tag> tags = new ArrayList<>();
         for(String tagname : data.getTags()){
             Tag tag = tagRepo.getByName(tagname);

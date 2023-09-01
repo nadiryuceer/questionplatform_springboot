@@ -13,6 +13,6 @@ public interface AnswerRepo extends JpaRepository<Answer,Integer> {
     void vote(int qid, int updatedvote);
 
     @Modifying
-    @Query("UPDATE Answer a SET a.txt = ?2 WHERE a.id = ?1")
-    void update(int id, String txt);
+    @Query("UPDATE Answer a SET a.text = ?2 WHERE a.id = ?1")
+    void update(int id, String text);
 }

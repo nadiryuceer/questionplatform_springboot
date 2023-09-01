@@ -5,7 +5,7 @@ import java.util.List;
 
 public class QuestionGetAllDTO {
     private String title;
-    private String descript;
+    private String description;
     private List<String> tags;
     private Date publishdate;
     private String askedby;
@@ -20,12 +20,15 @@ public class QuestionGetAllDTO {
     public void setTitle(String title) {
         this.title = title;
     }
-    public String getDescript() {
-        return descript;
+
+    public String getDescription() {
+        return description;
     }
-    public void setDescript(String descript) {
-        this.descript = descript;
+
+    public void setDescription(String description) {
+        this.description = description;
     }
+
     public Date getPublishdate() {
         return publishdate;
     }

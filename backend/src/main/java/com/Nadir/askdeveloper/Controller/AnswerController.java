@@ -66,6 +66,6 @@ public class AnswerController {
     })
     @PutMapping(value = "/answers/{id}")
     public Map<String, Boolean> update(@PathVariable("id") int id, @RequestBody TextUpdateDTO txt){
-        return answerService.update(id,txt.getTxt());
+        return answerService.update(id,txt.getText());
     }
 }

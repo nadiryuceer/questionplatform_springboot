@@ -20,6 +20,6 @@ public interface AnswerSaveMapper {
     @AfterMapping
     default void addUserandQuestion(AnswerSaveDTO dto, int qid, @MappingTarget Answer answer, @Context QuestionRepo questionRepo, @Context UserRepo userRepo){
         answer.setQuestion(questionRepo.getById(qid));
-        answer.setUser(userRepo.getById(dto.getUid()));
+        answer.setUser(userRepo.getByUserName(dto.getUsername()));
     }
 }

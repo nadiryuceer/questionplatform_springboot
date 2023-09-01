@@ -2,9 +2,9 @@ package com.Nadir.askdeveloper.dto;
 
 public class QuestionSaveDTO {
     private String title;
-    private String descript;
+    private String description;
     private String[] tags;
-    private int uid;
+    private String username;
 
     public String getTitle() {
         return title;
@@ -12,18 +12,23 @@ public class QuestionSaveDTO {
     public void setTitle(String title) {
         this.title = title;
     }
-    public String getDescript() {
-        return descript;
+
+    public String getDescription() {
+        return description;
     }
-    public void setDescript(String descript) {
-        this.descript = descript;
+
+    public void setDescription(String description) {
+        this.description = description;
     }
-    public int getUid() {
-        return uid;
+
+    public String getUsername() {
+        return username;
     }
-    public void setUid(int uid) {
-        this.uid = uid;
+
+    public void setUsername(String username) {
+        this.username = username;
     }
+
     public String[] getTags() {
         return tags;
     }
