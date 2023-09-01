@@ -1,21 +1,20 @@
-package com.Nadir.cs393project.service;
+package com.Nadir.askdeveloper.service;
 
-import com.Nadir.cs393project.Exception.AnswerNotFoundException;
-import com.Nadir.cs393project.Exception.QuestionNotFoundException;
-import com.Nadir.cs393project.Exception.UserNotFoundException;
-import com.Nadir.cs393project.Mapper.AnswerSaveMapper;
-import com.Nadir.cs393project.dto.AnswerSaveDTO;
-import com.Nadir.cs393project.model.Answer;
-import com.Nadir.cs393project.repo.AnswerRepo;
-import com.Nadir.cs393project.repo.QuestionRepo;
-import com.Nadir.cs393project.repo.UserRepo;
+import com.Nadir.askdeveloper.Exception.AnswerNotFoundException;
+import com.Nadir.askdeveloper.Exception.QuestionNotFoundException;
+import com.Nadir.askdeveloper.Exception.UserNotFoundException;
+import com.Nadir.askdeveloper.Mapper.AnswerSaveMapper;
+import com.Nadir.askdeveloper.dto.AnswerSaveDTO;
+import com.Nadir.askdeveloper.model.Answer;
+import com.Nadir.askdeveloper.repo.AnswerRepo;
+import com.Nadir.askdeveloper.repo.QuestionRepo;
+import com.Nadir.askdeveloper.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Service

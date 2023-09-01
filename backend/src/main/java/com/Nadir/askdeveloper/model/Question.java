@@ -1,4 +1,4 @@
-package com.Nadir.cs393project.model;
+package com.Nadir.askdeveloper.model;
 
 
 import com.fasterxml.jackson.annotation.JsonInclude;

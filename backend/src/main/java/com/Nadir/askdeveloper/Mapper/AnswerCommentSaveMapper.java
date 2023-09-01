@@ -1,11 +1,11 @@
-package com.Nadir.cs393project.Mapper;
+package com.Nadir.askdeveloper.Mapper;
 
-import com.Nadir.cs393project.Exception.AnswerNotFoundException;
-import com.Nadir.cs393project.Exception.UserNotFoundException;
-import com.Nadir.cs393project.dto.AnswerCommentSaveDTO;
-import com.Nadir.cs393project.model.CommentforAnswer;
-import com.Nadir.cs393project.repo.AnswerRepo;
-import com.Nadir.cs393project.repo.UserRepo;
+import com.Nadir.askdeveloper.Exception.AnswerNotFoundException;
+import com.Nadir.askdeveloper.Exception.UserNotFoundException;
+import com.Nadir.askdeveloper.dto.AnswerCommentSaveDTO;
+import com.Nadir.askdeveloper.model.CommentforAnswer;
+import com.Nadir.askdeveloper.repo.AnswerRepo;
+import com.Nadir.askdeveloper.repo.UserRepo;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Context;
 import org.mapstruct.Mapper;

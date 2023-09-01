@@ -1,18 +1,18 @@
-package com.Nadir.cs393project.service;
+package com.Nadir.askdeveloper.service;
 
-import com.Nadir.cs393project.Exception.QuestionNotFoundException;
-import com.Nadir.cs393project.Exception.UserNotFoundException;
-import com.Nadir.cs393project.Mapper.QuestionGetAllMapper;
-import com.Nadir.cs393project.Mapper.QuestionGetByIdWithDetailsMapper;
-import com.Nadir.cs393project.Mapper.QuestionSaveMapper;
-import com.Nadir.cs393project.dto.QuestionGetAllDTO;
-import com.Nadir.cs393project.dto.QuestionGetByIdWithDetails.QuestionDTO;
-import com.Nadir.cs393project.dto.QuestionSaveDTO;
-import com.Nadir.cs393project.model.Question;
-import com.Nadir.cs393project.model.Tag;
-import com.Nadir.cs393project.repo.QuestionRepo;
-import com.Nadir.cs393project.repo.TagRepo;
-import com.Nadir.cs393project.repo.UserRepo;
+import com.Nadir.askdeveloper.Exception.QuestionNotFoundException;
+import com.Nadir.askdeveloper.Exception.UserNotFoundException;
+import com.Nadir.askdeveloper.dto.QuestionGetByIdWithDetails.QuestionDTO;
+import com.Nadir.askdeveloper.Mapper.QuestionGetAllMapper;
+import com.Nadir.askdeveloper.Mapper.QuestionGetByIdWithDetailsMapper;
+import com.Nadir.askdeveloper.Mapper.QuestionSaveMapper;
+import com.Nadir.askdeveloper.dto.QuestionGetAllDTO;
+import com.Nadir.askdeveloper.dto.QuestionSaveDTO;
+import com.Nadir.askdeveloper.model.Question;
+import com.Nadir.askdeveloper.model.Tag;
+import com.Nadir.askdeveloper.repo.QuestionRepo;
+import com.Nadir.askdeveloper.repo.TagRepo;
+import com.Nadir.askdeveloper.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

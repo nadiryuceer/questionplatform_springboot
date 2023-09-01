@@ -1,8 +1,8 @@
-package com.Nadir.cs393project.service;
+package com.Nadir.askdeveloper.service;
 
-import com.Nadir.cs393project.dto.QuestionGetAllDTO;
-import com.Nadir.cs393project.dto.QuestionGetByIdWithDetails.QuestionDTO;
-import com.Nadir.cs393project.dto.QuestionSaveDTO;
+import com.Nadir.askdeveloper.dto.QuestionGetByIdWithDetails.QuestionDTO;
+import com.Nadir.askdeveloper.dto.QuestionGetAllDTO;
+import com.Nadir.askdeveloper.dto.QuestionSaveDTO;
 
 import java.util.List;
 import java.util.Map;

@@ -1,7 +1,7 @@
-package com.Nadir.cs393project.service;
+package com.Nadir.askdeveloper.service;
 
-import com.Nadir.cs393project.model.Tag;
-import com.Nadir.cs393project.repo.TagRepo;
+import com.Nadir.askdeveloper.model.Tag;
+import com.Nadir.askdeveloper.repo.TagRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.Nadir.cs393project.dto.QuestionGetByIdWithDetails;
+package com.Nadir.askdeveloper.dto.QuestionGetByIdWithDetails;
 
 import java.util.Date;
 import java.util.List;

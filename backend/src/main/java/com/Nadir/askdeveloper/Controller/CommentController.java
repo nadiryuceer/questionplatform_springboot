@@ -1,13 +1,12 @@
-package com.Nadir.cs393project.Controller;
+package com.Nadir.askdeveloper.Controller;
 
-import com.Nadir.cs393project.dto.AnswerCommentSaveDTO;
-import com.Nadir.cs393project.dto.QuestionCommentSaveDTO;
-import com.Nadir.cs393project.dto.TextUpdateDTO;
-import com.Nadir.cs393project.service.CommentService;
+import com.Nadir.askdeveloper.dto.AnswerCommentSaveDTO;
+import com.Nadir.askdeveloper.dto.QuestionCommentSaveDTO;
+import com.Nadir.askdeveloper.dto.TextUpdateDTO;
+import com.Nadir.askdeveloper.service.CommentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;

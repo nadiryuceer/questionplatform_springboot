@@ -1,9 +1,9 @@
-package com.Nadir.cs393project.Mapper;
+package com.Nadir.askdeveloper.Mapper;
 
-import com.Nadir.cs393project.dto.QuestionGetAllDTO;
-import com.Nadir.cs393project.model.Answer;
-import com.Nadir.cs393project.model.Question;
-import com.Nadir.cs393project.model.Tag;
+import com.Nadir.askdeveloper.model.Tag;
+import com.Nadir.askdeveloper.dto.QuestionGetAllDTO;
+import com.Nadir.askdeveloper.model.Answer;
+import com.Nadir.askdeveloper.model.Question;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 

@@ -1,4 +1,4 @@
-package com.Nadir.cs393project.dto;
+package com.Nadir.askdeveloper.dto;
 
 public class QuestionSaveDTO {
     private String title;

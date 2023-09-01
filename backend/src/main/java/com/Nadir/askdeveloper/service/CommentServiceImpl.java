@@ -1,19 +1,19 @@
-package com.Nadir.cs393project.service;
+package com.Nadir.askdeveloper.service;
 
-import com.Nadir.cs393project.Exception.AnswerNotFoundException;
-import com.Nadir.cs393project.Exception.CommentNotFoundException;
-import com.Nadir.cs393project.Exception.QuestionNotFoundException;
-import com.Nadir.cs393project.Exception.UserNotFoundException;
-import com.Nadir.cs393project.Mapper.AnswerCommentSaveMapper;
-import com.Nadir.cs393project.Mapper.QuestionCommentSaveMapper;
-import com.Nadir.cs393project.dto.AnswerCommentSaveDTO;
-import com.Nadir.cs393project.dto.QuestionCommentSaveDTO;
-import com.Nadir.cs393project.model.CommentforAnswer;
-import com.Nadir.cs393project.model.CommentforQuestion;
-import com.Nadir.cs393project.repo.AnswerRepo;
-import com.Nadir.cs393project.repo.CommentRepo;
-import com.Nadir.cs393project.repo.QuestionRepo;
-import com.Nadir.cs393project.repo.UserRepo;
+import com.Nadir.askdeveloper.Exception.AnswerNotFoundException;
+import com.Nadir.askdeveloper.Exception.CommentNotFoundException;
+import com.Nadir.askdeveloper.Exception.QuestionNotFoundException;
+import com.Nadir.askdeveloper.Exception.UserNotFoundException;
+import com.Nadir.askdeveloper.Mapper.AnswerCommentSaveMapper;
+import com.Nadir.askdeveloper.Mapper.QuestionCommentSaveMapper;
+import com.Nadir.askdeveloper.dto.AnswerCommentSaveDTO;
+import com.Nadir.askdeveloper.dto.QuestionCommentSaveDTO;
+import com.Nadir.askdeveloper.model.CommentforAnswer;
+import com.Nadir.askdeveloper.model.CommentforQuestion;
+import com.Nadir.askdeveloper.repo.AnswerRepo;
+import com.Nadir.askdeveloper.repo.CommentRepo;
+import com.Nadir.askdeveloper.repo.QuestionRepo;
+import com.Nadir.askdeveloper.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

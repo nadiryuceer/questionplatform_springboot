@@ -1,11 +1,9 @@
-package com.Nadir.cs393project.model;
+package com.Nadir.askdeveloper.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Date;
 import java.util.List;
 
 @Entity(name = "users")
@@ -17,6 +15,7 @@ public class User {
     private String nickname;
     private String firstName;
     private String lastName;
+    private String hashedPass;
     @OneToMany(mappedBy = "user")
     private List<Question> questions;
     @OneToMany(mappedBy = "user")

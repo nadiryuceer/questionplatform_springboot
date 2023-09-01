@@ -1,6 +1,6 @@
-package com.Nadir.cs393project.service;
+package com.Nadir.askdeveloper.service;
 
-import com.Nadir.cs393project.dto.AnswerSaveDTO;
+import com.Nadir.askdeveloper.dto.AnswerSaveDTO;
 
 import java.util.Map;
 

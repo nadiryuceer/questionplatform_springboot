@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @OpenAPIDefinition(info = @Info(version = "1.0",
 		title = "Question Forum API",
 		description = "All Administration Operations"))
-public class Cs393projectApplication {
+public class AskDeveloperApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Cs393projectApplication.class, args);
+		SpringApplication.run(AskDeveloperApplication.class, args);
 	}
 
 	@RequestMapping("/")

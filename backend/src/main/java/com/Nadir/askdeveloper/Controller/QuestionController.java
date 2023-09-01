@@ -1,9 +1,9 @@
-package com.Nadir.cs393project.Controller;
+package com.Nadir.askdeveloper.Controller;
 
-import com.Nadir.cs393project.dto.QuestionGetAllDTO;
-import com.Nadir.cs393project.dto.QuestionGetByIdWithDetails.QuestionDTO;
-import com.Nadir.cs393project.dto.QuestionSaveDTO;
-import com.Nadir.cs393project.service.QuestionService;
+import com.Nadir.askdeveloper.dto.QuestionGetByIdWithDetails.QuestionDTO;
+import com.Nadir.askdeveloper.dto.QuestionGetAllDTO;
+import com.Nadir.askdeveloper.dto.QuestionSaveDTO;
+import com.Nadir.askdeveloper.service.QuestionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;

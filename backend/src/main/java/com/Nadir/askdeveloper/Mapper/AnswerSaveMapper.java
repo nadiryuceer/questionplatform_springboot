@@ -1,9 +1,9 @@
-package com.Nadir.cs393project.Mapper;
+package com.Nadir.askdeveloper.Mapper;
 
-import com.Nadir.cs393project.dto.AnswerSaveDTO;
-import com.Nadir.cs393project.model.Answer;
-import com.Nadir.cs393project.repo.QuestionRepo;
-import com.Nadir.cs393project.repo.UserRepo;
+import com.Nadir.askdeveloper.dto.AnswerSaveDTO;
+import com.Nadir.askdeveloper.model.Answer;
+import com.Nadir.askdeveloper.repo.QuestionRepo;
+import com.Nadir.askdeveloper.repo.UserRepo;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Context;
 import org.mapstruct.Mapper;

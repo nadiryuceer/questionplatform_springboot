@@ -1,6 +1,6 @@
-package com.Nadir.cs393project.service;
+package com.Nadir.askdeveloper.service;
 
-import com.Nadir.cs393project.model.User;
+import com.Nadir.askdeveloper.model.User;
 
 public interface UserService {
     public boolean save(User user);

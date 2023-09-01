@@ -1,6 +1,6 @@
-package com.Nadir.cs393project.service;
+package com.Nadir.askdeveloper.service;
 
-import com.Nadir.cs393project.model.Tag;
+import com.Nadir.askdeveloper.model.Tag;
 
 public interface TagService {
     public void save(Tag tag);

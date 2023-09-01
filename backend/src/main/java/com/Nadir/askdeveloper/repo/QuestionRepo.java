@@ -1,6 +1,6 @@
-package com.Nadir.cs393project.repo;
+package com.Nadir.askdeveloper.repo;
 
-import com.Nadir.cs393project.model.Question;
+import com.Nadir.askdeveloper.model.Question;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

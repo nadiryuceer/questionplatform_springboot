@@ -1,7 +1,7 @@
-package com.Nadir.cs393project.service;
+package com.Nadir.askdeveloper.service;
 
-import com.Nadir.cs393project.model.User;
-import com.Nadir.cs393project.repo.UserRepo;
+import com.Nadir.askdeveloper.model.User;
+import com.Nadir.askdeveloper.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
