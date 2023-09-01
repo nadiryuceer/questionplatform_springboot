@@ -20,4 +20,8 @@ public class UserServiceImpl implements UserService {
         }
 
     }
+
+    public User get(String nickname) {
+        return userRepo.getByName(nickname);
+    }
 }
