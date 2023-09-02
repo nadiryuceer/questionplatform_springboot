@@ -30,7 +30,7 @@ public class Question {
     @JoinTable(joinColumns =
         @JoinColumn(name = "question_id",referencedColumnName = "id"),
         inverseJoinColumns =
-        @JoinColumn(name = "tag_id",referencedColumnName = "id"))
+        @JoinColumn(name = "tag_name",referencedColumnName = "name"))
     private List<Tag> tags;
 
     public Question() {

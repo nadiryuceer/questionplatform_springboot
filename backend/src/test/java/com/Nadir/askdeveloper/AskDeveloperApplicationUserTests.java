@@ -1,6 +1,7 @@
 package com.Nadir.askdeveloper;
 
 import com.Nadir.askdeveloper.Exception.UserExistsException;
+import com.Nadir.askdeveloper.dto.QuestionGetByIdWithDetails.QuestionDTO;
 import com.Nadir.askdeveloper.dto.QuestionSaveDTO;
 import com.Nadir.askdeveloper.model.*;
 import com.Nadir.askdeveloper.repo.UserRepo;
@@ -76,9 +77,7 @@ class AskDeveloperApplicationUserTests {
 
 
     @Test
-    void UserTests(){
-
-
+    void UserServiceTests(){
         // Initial user creation
         User user1 = createUser("testuser", "testuser@gmail.com");
         userService.save(user1);
@@ -103,6 +102,22 @@ class AskDeveloperApplicationUserTests {
             assertTrue("duplicate user add failure",true);
         }
 
+    }
+
+    @Test
+    void TagServiceTests(){
+        // Initial tag creation
+        Tag tag = createTag("java");
+        tagService.save(tag);
+    }
+    @Test
+    void QuestionServiceTests(){
+        // Initial question creation
+        QuestionSaveDTO question1 = createQuestion("Terminator", "Testquestion", "Having an issue. Need help.");
+        question1.setTags(new String[]{"springboot", "java"});
+        int id = questionService.save(question1);
+        QuestionDTO question = questionService.getByIdWithDetails(id);
+        assertEquals("object saved", question1, question);
     }
 
 }
