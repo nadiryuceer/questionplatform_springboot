@@ -12,4 +12,8 @@ public class TagServiceImpl implements TagService {
     public void save(Tag tag){
         tagRepo.save(tag);
     }
+
+    public void getAllTags(){
+        tagRepo.getAll();
+    }
 }
