@@ -17,6 +17,7 @@ public class Answer {
     private Date publishdate = new Date();
     private int votes=0;
     @ManyToOne
+    @JoinColumn(name="username", nullable = false)
     private User user;
     @ManyToOne
     private Question question;

@@ -19,6 +19,6 @@ public interface TagRepo extends JpaRepository<Tag,Integer> {
     @Query("SELECT t FROM Tag AS t where t.name=?1")
     Tag getByName(String tagname);
 
-    @Query("SELECT t FROM tag AS t")
+    @Query("SELECT t FROM Tag AS t")
     List<Tag> getAll();
 }

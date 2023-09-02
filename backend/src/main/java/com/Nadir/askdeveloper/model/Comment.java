@@ -18,6 +18,7 @@ public abstract class Comment {
     private Date publishdate=new Date();
     private int votes=0;
     @ManyToOne
+    @JoinColumn(name="username", nullable = false)
     private User user;
 
     public Comment(){}
