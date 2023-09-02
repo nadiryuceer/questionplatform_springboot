@@ -32,9 +32,8 @@ public class QuestionServiceImpl implements QuestionService {
     public int save(QuestionSaveDTO data) {
         userRepo.findByUserName(data.getUsername()).orElseThrow(UserNotFoundException::new);
         Question q = QuestionSaveMapper.INSTANCE.createFullObjectforSave(data, userRepo,tagRepo);
-        for(Tag t : q.getTags()) t.addQuestion(q);
-        questionRepo.save(q);
-        return q.getId();
+        Question saved = questionRepo.save(q);
+        return saved.getId();
     }
     public List<QuestionGetAllDTO> converttoDTOList(List<Question> qs){
         List<QuestionGetAllDTO> dtos = new ArrayList<>();
@@ -49,12 +48,13 @@ public class QuestionServiceImpl implements QuestionService {
     public List<QuestionGetAllDTO> getWithTags(String[] tags){
         return converttoDTOList(questionRepo.getAllWithTags(tags));
     }
+    @Transactional
     public QuestionDTO getByIdWithDetails(int id){
-        try{
+        //try{
             return QuestionGetByIdWithDetailsMapper.INSTANCE.convertQuestiontoDTO(questionRepo.getById(id));
-        } catch (Exception e){
-            throw new QuestionNotFoundException();
-        }
+        //} catch (Exception e){
+        //    throw new QuestionNotFoundException();
+        //}
     }
     @Transactional
     public Map<String, Integer> vote(int id, boolean isupvote){

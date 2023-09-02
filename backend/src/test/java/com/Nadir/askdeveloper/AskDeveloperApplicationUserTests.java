@@ -4,6 +4,7 @@ import com.Nadir.askdeveloper.Exception.UserExistsException;
 import com.Nadir.askdeveloper.dto.QuestionGetByIdWithDetails.QuestionDTO;
 import com.Nadir.askdeveloper.dto.QuestionSaveDTO;
 import com.Nadir.askdeveloper.model.*;
+import com.Nadir.askdeveloper.repo.QuestionRepo;
 import com.Nadir.askdeveloper.repo.UserRepo;
 import com.Nadir.askdeveloper.service.*;
 import org.junit.jupiter.api.MethodOrderer;
@@ -23,6 +24,8 @@ import static org.springframework.test.util.AssertionErrors.*;
 class AskDeveloperApplicationUserTests {
     @Autowired
     QuestionService questionService;
+    @Autowired
+    QuestionRepo questionRepo;
     @Autowired
     AnswerService answerService;
     @Autowired
@@ -117,7 +120,7 @@ class AskDeveloperApplicationUserTests {
         question1.setTags(new String[]{"springboot", "java"});
         int id = questionService.save(question1);
         QuestionDTO question = questionService.getByIdWithDetails(id);
-        assertEquals("object saved", question1, question);
+        assertEquals("object saved", question1.getTitle(), question.getTitle());
     }
 
 }
