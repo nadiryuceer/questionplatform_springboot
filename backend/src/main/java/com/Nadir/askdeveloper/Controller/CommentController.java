@@ -33,7 +33,8 @@ public class CommentController {
     })
     @PostMapping(path = "/questions/{qid}/comments")
     Map<String,Integer> addCommentforQuestion(@PathVariable("qid") int qid, @RequestBody QuestionCommentSaveDTO comment){
-        return commentService.save(comment, qid);
+        comment.setQuestionid(qid);
+        return commentService.save(comment);
     }
 
     @Operation( summary = "AddCommenttoAnswer.",
@@ -45,7 +46,8 @@ public class CommentController {
     })
     @PostMapping(path = "/answers/{answerid}/comments")
     Map<String,Integer> addCommentforAnswer(@PathVariable("answerid") int answerid, @RequestBody AnswerCommentSaveDTO comment){
-        return commentService.save(comment, answerid);
+        comment.setAnswerid(answerid);
+        return commentService.save(comment);
     }
 
     @Operation( summary = "Upvote comment.",

@@ -27,10 +27,10 @@ public class AnswerServiceImpl implements AnswerService {
     @Autowired
     UserRepo userRepo;
 
-    public Map<String,Integer> save(AnswerSaveDTO answerDTO, int qid){
-        questionRepo.findById(qid).orElseThrow(QuestionNotFoundException::new);
+    public Map<String,Integer> save(AnswerSaveDTO answerDTO){
+        questionRepo.findById(answerDTO.getQuestionid()).orElseThrow(QuestionNotFoundException::new);
         userRepo.findByUserName(answerDTO.getUsername()).orElseThrow(UserNotFoundException::new);
-        Answer answer = AnswerSaveMapper.INSTANCE.createAnswerfromDTO(answerDTO, qid, questionRepo,userRepo);
+        Answer answer = AnswerSaveMapper.INSTANCE.createAnswerfromDTO(answerDTO, questionRepo,userRepo);
         answer.getQuestion().addAnswer(answer);
         answer.getUser().addAnswer(answer);
         answerRepo.save(answer);

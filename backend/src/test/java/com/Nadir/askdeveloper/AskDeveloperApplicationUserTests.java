@@ -2,6 +2,7 @@ package com.Nadir.askdeveloper;
 
 import com.Nadir.askdeveloper.Exception.UserExistsException;
 import com.Nadir.askdeveloper.dto.AnswerCommentSaveDTO;
+import com.Nadir.askdeveloper.dto.AnswerSaveDTO;
 import com.Nadir.askdeveloper.dto.QuestionCommentSaveDTO;
 import com.Nadir.askdeveloper.dto.QuestionGetByIdWithDetails.QuestionDTO;
 import com.Nadir.askdeveloper.dto.QuestionSaveDTO;
@@ -54,16 +55,18 @@ class AskDeveloperApplicationUserTests {
         question.setUsername(username);
         return question;
     }
-    QuestionCommentSaveDTO createCommentforQuestion(String username, String text){
+    QuestionCommentSaveDTO createCommentforQuestion(String username, int questionid, String text){
         QuestionCommentSaveDTO comment = new QuestionCommentSaveDTO();
         comment.setUsername(username);
+        comment.setQuestionid(questionid);
         comment.setText(text);
         return comment;
     }
 
-    AnswerCommentSaveDTO createCommentforAnswer(String username, String text){
+    AnswerCommentSaveDTO createCommentforAnswer(String username, int answerid, String text){
         AnswerCommentSaveDTO comment = new AnswerCommentSaveDTO();
         comment.setUsername(username);
+        comment.setAnswerid(answerid);
         comment.setText(text);
         return comment;
     }
@@ -72,10 +75,10 @@ class AskDeveloperApplicationUserTests {
         tag.setName(name);
         return tag;
     }
-    Answer createAnswer(User user, Question question,String text){
-        Answer answer = new Answer();
-        answer.setUser(user);
-        answer.setQuestion(question);
+    AnswerSaveDTO createAnswer(String username, int questionid, String text){
+        AnswerSaveDTO answer = new AnswerSaveDTO();
+        answer.setUsername(username);
+        answer.setQuestionid(questionid);
         answer.setText(text);
         return answer;
     }
@@ -128,13 +131,13 @@ class AskDeveloperApplicationUserTests {
     @Test
     void CommentServiceTests(){
         // Initial comment creation for question
-        QuestionCommentSaveDTO comment1 = createCommentforQuestion("Terminator", "comment1");
-        commentService.save(comment1,1);
+        QuestionCommentSaveDTO comment1 = createCommentforQuestion("Terminator", 1, "comment1");
+        commentService.save(comment1);
         assertEquals("check if comment added to question", questionService.getByIdWithDetails(1).getComments().get(0).getText(), "comment1");
 
         // Initial comment creation for answer
-        AnswerCommentSaveDTO comment2 = createCommentforAnswer("Terminator", "comment2");
-        commentService.save(comment2, 1);
+        AnswerCommentSaveDTO comment2 = createCommentforAnswer("Terminator",1, "comment2");
+        commentService.save(comment2);
         assertEquals("check if comment added to answer", questionService.getByIdWithDetails(1).getAnswers().get(0).getComments().get(0).getText(), "comment2");
     }
 

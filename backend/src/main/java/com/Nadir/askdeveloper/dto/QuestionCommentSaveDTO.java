@@ -3,6 +3,7 @@ package com.Nadir.askdeveloper.dto;
 public class QuestionCommentSaveDTO {
     private String text;
     private String username;
+    private int questionid;
 
     public String getText() {
         return text;
@@ -17,5 +18,13 @@ public class QuestionCommentSaveDTO {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public int getQuestionid() {
+        return questionid;
+    }
+
+    public void setQuestionid(int questionid) {
+        this.questionid = questionid;
     }
 }

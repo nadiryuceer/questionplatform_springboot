@@ -4,6 +4,8 @@ public class AnswerCommentSaveDTO {
     private String text;
     private String username;
 
+    private int answerid;
+
     public String getUsername() {
         return username;
     }
@@ -17,5 +19,13 @@ public class AnswerCommentSaveDTO {
     }
     public void setText(String text) {
         this.text = text;
+    }
+
+    public int getAnswerid() {
+        return answerid;
+    }
+
+    public void setAnswerid(int answerid) {
+        this.answerid = answerid;
     }
 }

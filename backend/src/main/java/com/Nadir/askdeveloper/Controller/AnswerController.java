@@ -31,7 +31,8 @@ public class AnswerController {
             @ApiResponse(responseCode = "404", description = "question/user with provided id does not exist", content = @Content)
     })
     public Map<String,Integer> addAnswertoQuestion(@PathVariable("qid") int qid, @RequestBody AnswerSaveDTO answerSaveDTO){
-        return answerService.save(answerSaveDTO, qid);
+        answerSaveDTO.setQuestionid(qid);
+        return answerService.save(answerSaveDTO);
     }
     @Operation( summary = "Upvote answer.",
             description = "Upvotes a specific answer.",
