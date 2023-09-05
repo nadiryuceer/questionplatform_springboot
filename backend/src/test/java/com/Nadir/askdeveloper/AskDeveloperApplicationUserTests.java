@@ -1,11 +1,8 @@
 package com.Nadir.askdeveloper;
 
 import com.Nadir.askdeveloper.Exception.UserExistsException;
-import com.Nadir.askdeveloper.dto.AnswerCommentSaveDTO;
-import com.Nadir.askdeveloper.dto.AnswerSaveDTO;
-import com.Nadir.askdeveloper.dto.QuestionCommentSaveDTO;
+import com.Nadir.askdeveloper.dto.*;
 import com.Nadir.askdeveloper.dto.QuestionGetByIdWithDetails.QuestionDTO;
-import com.Nadir.askdeveloper.dto.QuestionSaveDTO;
 import com.Nadir.askdeveloper.model.*;
 import com.Nadir.askdeveloper.repo.QuestionRepo;
 import com.Nadir.askdeveloper.repo.UserRepo;
@@ -28,8 +25,6 @@ class AskDeveloperApplicationUserTests {
     @Autowired
     QuestionService questionService;
     @Autowired
-    QuestionRepo questionRepo;
-    @Autowired
     AnswerService answerService;
     @Autowired
     CommentService commentService;
@@ -37,11 +32,9 @@ class AskDeveloperApplicationUserTests {
     TagService tagService;
     @Autowired
     UserService userService;
-    @Autowired
-    UserRepo userRepo;
 
-    User createUser(String name, String email){
-        User user = new User();
+    UserSaveDTO createUser(String name, String email){
+        UserSaveDTO user = new UserSaveDTO();
         user.setUsername(name);
         user.setEmail(email);
         user.setFirstname("test");
@@ -87,13 +80,13 @@ class AskDeveloperApplicationUserTests {
     @Test
     void UserServiceTests(){
         // Initial user creation
-        User user1 = createUser("testuser", "testuser@gmail.com");
+        UserSaveDTO user1 = createUser("testuser", "testuser@gmail.com");
         userService.save(user1);
         userService.get("testuser");
         assertEquals("user added", user1.getUsername(), userService.get(user1.getUsername()).getUsername());
 
         // Cannot add user with same name
-        User user2 = createUser("testuser", "testuser2@gmail.com");
+        UserSaveDTO user2 = createUser("testuser", "testuser2@gmail.com");
         try{
             userService.save(user2);
             assertTrue("duplicate user add success", false);
@@ -102,7 +95,7 @@ class AskDeveloperApplicationUserTests {
         }
 
         // Cannot add user with same email
-        User user3 = createUser("testuser2", "testuser@gmail.com");
+        UserSaveDTO user3 = createUser("testuser2", "testuser@gmail.com");
         try{
             userService.save(user3);
             assertTrue("duplicate user add success", false);

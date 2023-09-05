@@ -1,6 +1,7 @@
 package com.Nadir.askdeveloper.Controller;
 
 import com.Nadir.askdeveloper.dto.AnswerSaveDTO;
+import com.Nadir.askdeveloper.dto.UserSaveDTO;
 import com.Nadir.askdeveloper.model.User;
 import com.Nadir.askdeveloper.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -11,6 +12,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Map;
 
 @RestController
@@ -29,7 +31,7 @@ public class UserController {
             @ApiResponse(responseCode = "200", description = "successful save", content = @Content),
             @ApiResponse(responseCode = "500", description = "user with provided name/email exists", content = @Content)
     })
-    public void addUser(@RequestBody User user){
+    public void addUser(@Valid @RequestBody UserSaveDTO user){
         userService.save(user);
     }
 
