@@ -1,6 +1,5 @@
 package com.Nadir.askdeveloper.Controller;
 
-import com.Nadir.askdeveloper.dto.AnswerSaveDTO;
 import com.Nadir.askdeveloper.dto.UserSaveDTO;
 import com.Nadir.askdeveloper.model.User;
 import com.Nadir.askdeveloper.service.UserService;
@@ -13,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Map;
 
 @RestController
 public class UserController {
