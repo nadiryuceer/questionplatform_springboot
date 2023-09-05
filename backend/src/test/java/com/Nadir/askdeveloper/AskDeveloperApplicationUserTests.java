@@ -44,8 +44,8 @@ class AskDeveloperApplicationUserTests {
         User user = new User();
         user.setUsername(name);
         user.setEmail(email);
-        user.setFirstName("test");
-        user.setLastName("user");
+        user.setFirstname("test");
+        user.setLastname("user");
         return user;
     }
     QuestionSaveDTO createQuestion(String username, String title, String desc){
@@ -139,6 +139,15 @@ class AskDeveloperApplicationUserTests {
         AnswerCommentSaveDTO comment2 = createCommentforAnswer("Terminator",1, "comment2");
         commentService.save(comment2);
         assertEquals("check if comment added to answer", questionService.getByIdWithDetails(1).getAnswers().get(0).getComments().get(0).getText(), "comment2");
+    }
+
+    @Test
+    void AnswerServiceTests(){
+        // Initial answer creation
+        AnswerSaveDTO answerSaveDTO = createAnswer("PcNerd", 2, "pcnerdanswer");
+        answerService.save(answerSaveDTO);
+        assertEquals("check if answer added", questionService.getByIdWithDetails(2).getAnswers().get(0).getText(), "pcnerdanswer");
+
     }
 
 }
