@@ -5,17 +5,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { QuestionItemComponent } from './question-item.component';
-import { QuestionItemListComponent } from './question-item-list.component';
-import { QuestionItemFormComponent } from './question-item-form.component';
-import { QuestionService } from 'src/service/question-service';
+import { QuestionComponent } from './question/component/question';
+import { QuestionListComponent } from './question/component/question-list';
+import { QuestionFormComponent } from './question/component/question-form';
+import { QuestionService } from 'src/app/question/question-service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    QuestionItemComponent,
-    QuestionItemListComponent,
-    QuestionItemFormComponent
+    QuestionComponent,
+    QuestionListComponent,
+    QuestionFormComponent
   ],
   imports: [
     BrowserModule,
