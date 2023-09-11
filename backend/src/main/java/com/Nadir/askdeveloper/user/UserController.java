@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200/")
 public class UserController {
 
     public final String usersaveschema = "{\n    \"username\": \"string\",\n    \"email\": \"string\",\n    \"firstname\": \"string\",\n    \"lastname\": \"string\"}";
