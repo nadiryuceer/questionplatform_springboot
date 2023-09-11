@@ -4,8 +4,6 @@ import com.Nadir.askdeveloper.Exception.UserExistsException;
 import com.Nadir.askdeveloper.dto.*;
 import com.Nadir.askdeveloper.dto.QuestionGetByIdWithDetails.QuestionDTO;
 import com.Nadir.askdeveloper.model.*;
-import com.Nadir.askdeveloper.repo.QuestionRepo;
-import com.Nadir.askdeveloper.repo.UserRepo;
 import com.Nadir.askdeveloper.service.*;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
@@ -14,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.DuplicateKeyException;
 
 import static org.springframework.test.util.AssertionErrors.*;
 

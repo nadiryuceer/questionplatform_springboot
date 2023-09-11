@@ -1,0 +1,20 @@
+<header>
+    <h2>Add new question</h2>
+</header>
+<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <ul>
+        <li>
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" formControlName="title">
+        </li>
+        <li>
+            <label for="description">Description</label>
+            <input type="text" name="description" id="description" formControlName="description">
+        </li>
+        <li>
+            <label for="username">User</label>
+            <input type="text" name="username" id="username" formControlName="username">
+        </li>
+    </ul>
+    <button type="submit" [disabled]="!form.valid">Save</button>
+</form>

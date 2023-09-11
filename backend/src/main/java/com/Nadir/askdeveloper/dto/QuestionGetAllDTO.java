@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 public class QuestionGetAllDTO {
+    private int id;
     private String title;
     private String description;
     private List<String> tags;
@@ -13,6 +14,14 @@ public class QuestionGetAllDTO {
     private int votes;
 
     public QuestionGetAllDTO() {}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;

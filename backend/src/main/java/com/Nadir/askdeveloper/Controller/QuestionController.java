@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200/")
 public class QuestionController {
     public final String idreturnschema = "{\n    \"id\": 0\n}";
     public final String votereturnschema = "{\n    \"votecount\": 0\n}";
