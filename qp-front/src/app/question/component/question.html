@@ -1,5 +1,5 @@
 <h2>Id: {{ questionItem.id }}</h2>
-<div>Title: {{ questionItem.title }}</div>
+<div routerLink="/questions/{{questionItem.id}}/details">Title: {{ questionItem.title }}</div>
 <div>Description: {{ questionItem.description }}</div>
 <div>Tags: {{ questionItem.tags }} </div>
 <div>Publish date: {{ questionItem.publishdate | date }}</div>

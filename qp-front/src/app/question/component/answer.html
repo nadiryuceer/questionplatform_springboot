@@ -1,0 +1,10 @@
+<h3>Answer with id: {{answer.id}}</h3>
+<div>Text: {{answer.text}}</div>
+<div>publishdate: {{answer.publishdate}}</div>
+<div>votes: {{answer.votes}}</div>
+<div>username: {{answer.username}}</div>
+<div>Comments for answer:
+    <comment-item *ngFor="let comment of answer.comments"
+        [comment]="comment">
+    </comment-item>
+</div>

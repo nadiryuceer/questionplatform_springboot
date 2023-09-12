@@ -8,9 +8,13 @@ export class QuestionService{
 
     constructor(private http: HttpClient){}
 
-    get(){
+    getAll(){
         return this.http.get<QuestionItemResponse>('http://localhost:9000/questions')
         .pipe(catchError(this.handleError));
+    }
+
+    get(id: number){
+        return this.http.get<QuestionDetailsItem>(`http://localhost:9000/questions/${id}`)
     }
 
     add(item: any){
@@ -21,6 +25,30 @@ export class QuestionService{
         console.log(error.message)
         return throwError('Backend issue!')
     }
+}
+
+interface QuestionDetailsItem{
+    title: string,
+    description: string,
+    tags: string[],
+    publishdate: string,
+    username: string,
+    votes: number,
+    views: number
+    comments: CommentItem[]
+    answers: AnswerItem[]
+}
+
+interface CommentItem{
+    id: number,
+    text: string,
+    publishdate: string,
+    votes: number,
+    username: string
+}
+
+interface AnswerItem extends CommentItem{
+    comments: CommentItem[]
 }
 
 interface QuestionItem{

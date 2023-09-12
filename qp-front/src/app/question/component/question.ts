@@ -18,6 +18,7 @@ export class QuestionComponent{
     };
 
     @Output() delete = new EventEmitter();
+    @Output() questionDetails = new EventEmitter();
 
     onDelete(){
         console.log('Delete clicked');

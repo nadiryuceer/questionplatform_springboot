@@ -12,6 +12,9 @@ import { QuestionService } from 'src/app/question/question-service';
 import { UserRegisterComponent } from './user/component/user-register';
 import { RouterModule } from '@angular/router';
 import { UserService } from './user/user-service';
+import { QuestionDetailsComponent } from './question/component/question-details';
+import { AnswerComponent } from './question/component/answer';
+import { CommentComponent } from './question/component/comment';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,9 @@ import { UserService } from './user/user-service';
     QuestionListComponent,
     QuestionFormComponent,
     UserRegisterComponent,
+    QuestionDetailsComponent,
+    AnswerComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
