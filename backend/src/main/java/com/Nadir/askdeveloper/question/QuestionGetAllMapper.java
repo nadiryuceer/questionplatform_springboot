@@ -15,7 +15,7 @@ public interface QuestionGetAllMapper {
     QuestionGetAllMapper INSTANCE = Mappers.getMapper( QuestionGetAllMapper.class );
 
     @Mapping(source = "tags", target = "tags", qualifiedByName = "getTagNames")
-    @Mapping(source = "user.username", target = "askedby")
+    @Mapping(source = "user.name", target = "askedby")
     @Mapping(source = "answers", target = "answercount", qualifiedByName = "countAnswers")
     @Mapping(source = "description", target = "description", qualifiedByName = "cropString")
     QuestionGetAllDTO GetCutDTO(Question question);
