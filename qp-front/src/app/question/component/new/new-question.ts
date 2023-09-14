@@ -1,12 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { QuestionService } from "../question-service";
+import { QuestionService } from "../../question-service";
 
 @Component({
-    selector: 'question-form',
-    templateUrl: './question-form.html'
+    selector: 'new-question',
+    templateUrl: './new-question.html'
 })
-export class QuestionFormComponent implements OnInit{
+export class NewQuestionComponent implements OnInit{
     form: FormGroup = new FormGroup('');
 
     constructor(private questionService: QuestionService){}

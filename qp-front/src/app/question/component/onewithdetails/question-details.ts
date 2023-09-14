@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { QuestionService } from "../question-service";
+import { QuestionService } from "../../question-service";
 import { AppRoutingModule } from "src/app/app-routing.module";
 import { ActivatedRoute } from '@angular/router';
 
