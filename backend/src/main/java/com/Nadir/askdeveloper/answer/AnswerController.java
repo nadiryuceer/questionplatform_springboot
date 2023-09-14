@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200/")
 public class AnswerController {
     public final String answerquestionreturnschema = "{\n    \"answer_id\": 0,\n    \"question_id\": 0\n}";
     public final String votereturnschema = "{\n    \"votecount\": 0\n}";

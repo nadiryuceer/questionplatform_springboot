@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200/")
 public class CommentController {
     public final String commentquestionreturnschema = "{\n    \"comment_id\": 0,\n    \"question_id\": 0\n}";
     public final String commentanswerreturnschema = "{\n    \"comment_id\": 0,\n    \"answer_id\": 0\n}";

@@ -16,3 +16,8 @@
         [answer]="answer">
     </answer-item>
 </div>
+<div>Add your answer:</div>
+<form [formGroup]="form" (ngSubmit)="addAnswer(form.value.text)">
+    <input type="text" id="text" formControlName="text">
+    <button type="submit">Add Answer</button>
+</form>

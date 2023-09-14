@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { QuestionService } from "../../question-service";
+import { QuestionService } from "../../question.service";
 import { Router } from "@angular/router";
 
 @Component({
@@ -21,6 +21,8 @@ export class NewQuestionComponent implements OnInit{
     }
 
     onSubmit(questionItem: any){
-        this.questionService.add(questionItem).subscribe(id => {this.router.navigateByUrl(`/questions/${id}/details`)});
+        this.questionService.add(questionItem).subscribe(id => {
+            this.router.navigateByUrl(`/questions/${id}/details`)
+        });
     }
 }

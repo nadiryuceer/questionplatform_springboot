@@ -7,13 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { QuestionComponent } from './question/component/all/question';
 import { QuestionListComponent } from './question/component/all/question-list';
-import { QuestionService } from 'src/app/question/question-service';
+import { QuestionService } from 'src/app/question/question.service';
 import { UserRegisterComponent } from './user/component/user-register';
 import { UserService } from './user/user-service';
 import { QuestionDetailsComponent } from './question/component/onewithdetails/question-details';
 import { AnswerComponent } from './question/component/onewithdetails/answer';
 import { CommentComponent } from './question/component/onewithdetails/comment';
 import { NewQuestionComponent } from './question/component/new/new-question';
+import { AnswerService } from './question/answer.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { NewQuestionComponent } from './question/component/new/new-question';
   ],
   providers: [
     QuestionService,
-    UserService
+    UserService,
+    AnswerService
   ],
   bootstrap: [AppComponent]
 })
