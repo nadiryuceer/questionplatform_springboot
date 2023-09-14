@@ -19,7 +19,7 @@ export class QuestionService{
 
     add(item: any){
         item.tags = []
-        return this.http.post('http://localhost:9000/questions', item).subscribe()
+        return this.http.post('http://localhost:9000/questions', item)
     }
     private handleError(error: HttpErrorResponse){
         console.log(error.message)
