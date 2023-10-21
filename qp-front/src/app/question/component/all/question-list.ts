@@ -3,7 +3,8 @@ import { QuestionService } from "../../question.service";
 
 @Component({
     selector: 'question-item-list',
-    templateUrl: './question-list.html'
+    templateUrl: './question-list.html',
+    styleUrls: ['./question-list.css']
 })
 export class QuestionListComponent implements OnInit{
     questionList: any;

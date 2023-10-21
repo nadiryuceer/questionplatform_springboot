@@ -17,7 +17,7 @@ export class QuestionService{
         return this.http.get<QuestionDetailsItem>(`http://localhost:9000/questions/${id}`)
     }
 
-    add(item: any){
+    add(item: QuestionAddItem){
         item.tags = []
         return this.http.post('http://localhost:9000/questions', item)
     }
@@ -64,4 +64,11 @@ interface QuestionItem{
 
 interface QuestionItemResponse{
     questionList: QuestionItem[] 
+}
+
+interface QuestionAddItem{
+    title: string,
+    description: string,
+    username: string,
+    tags: string[]
 }

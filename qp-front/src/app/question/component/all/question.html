@@ -1,8 +1,11 @@
-<h2>Id: {{ questionItem.id }}</h2>
-<div routerLink="/questions/{{questionItem.id}}/details">Title: {{ questionItem.title }}</div>
-<div>Description: {{ questionItem.description }}</div>
-<div>Tags: {{ questionItem.tags }} </div>
-<div>Publish date: {{ questionItem.publishdate | date }}</div>
-<div>Published by: {{ questionItem.askedby }} </div>
-<div>Has {{ questionItem.answercount }} answers.</div>
-<div>Votes: {{ questionItem.votes }}</div>
+<div class="questionitem">
+    <div class="title" routerLink="/questions/{{questionItem.id}}/details">{{ questionItem.title }}</div>
+    <div class="description">{{ questionItem.description }}</div>
+    <div class="tags">{{ questionItem.tags }} </div>
+    <div class="questionbottom">
+      <div class="publishdate">Created on: {{ questionItem.publishdate | date }}</div>
+      <div class="user">{{ questionItem.askedby }} </div>
+      <div class="answercount">{{ questionItem.answercount }} answers</div>
+      <div class="votes">{{ questionItem.votes }} votes</div>
+    </div>
+</div>
